@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on codex</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://gsajko.github.io/posts/</link>
     <description>Recent content in Posts on codex</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Tue, 20 Oct 2020 15:24:01 +0200</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Oct 2020 15:24:01 +0200</lastBuildDate><atom:link href="https://gsajko.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My First Post</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
+      <link>https://gsajko.github.io/posts/my-first-post/</link>
       <pubDate>Tue, 20 Oct 2020 15:24:01 +0200</pubDate>
       
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description></description>
+      <guid>https://gsajko.github.io/posts/my-first-post/</guid>
+      <description>Hello, World!</description>
     </item>
     
   </channel>
