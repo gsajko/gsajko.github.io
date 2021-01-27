@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on codex</title>
-    <link>https://gsajko.github.io/posts/</link>
-    <description>Recent content in Posts on codex</description>
+    <title>projects on codex</title>
+    <link>https://gsajko.github.io/tags/projects/</link>
+    <description>Recent content in projects on codex</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Tue, 26 Jan 2021 10:15:57 +0100</lastBuildDate><atom:link href="https://gsajko.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Jan 2021 10:15:57 +0100</lastBuildDate><atom:link href="https://gsajko.github.io/tags/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Custom twitter feed project - Part 1</title>
       <link>https://gsajko.github.io/posts/custom-twitter-feed-part1/</link>
