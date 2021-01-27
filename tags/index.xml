@@ -6,6 +6,34 @@
     <description>Recent content in Tags on codex</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>© {year}</copyright><atom:link href="https://gsajko.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Tue, 26 Jan 2021 10:15:57 +0100</lastBuildDate><atom:link href="https://gsajko.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>custom_feed</title>
+      <link>https://gsajko.github.io/blog/tags/custom_feed/</link>
+      <pubDate>Tue, 26 Jan 2021 10:15:57 +0100</pubDate>
+      
+      <guid>https://gsajko.github.io/blog/tags/custom_feed/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>projects</title>
+      <link>https://gsajko.github.io/blog/tags/projects/</link>
+      <pubDate>Tue, 26 Jan 2021 10:15:57 +0100</pubDate>
+      
+      <guid>https://gsajko.github.io/blog/tags/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>twitter</title>
+      <link>https://gsajko.github.io/blog/tags/twitter/</link>
+      <pubDate>Tue, 26 Jan 2021 10:15:57 +0100</pubDate>
+      
+      <guid>https://gsajko.github.io/blog/tags/twitter/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
