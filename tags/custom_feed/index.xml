@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>custom_feed on codex</title>
-    <link>https://gsajko.github.io/tags/custom_feed/</link>
+    <link>https://gsajko.github.io/blog/tags/custom_feed/</link>
     <description>Recent content in custom_feed on codex</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Tue, 26 Jan 2021 10:15:57 +0100</lastBuildDate><atom:link href="https://gsajko.github.io/tags/custom_feed/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Jan 2021 10:15:57 +0100</lastBuildDate><atom:link href="https://gsajko.github.io/blog/tags/custom_feed/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Custom twitter feed project - Part 1</title>
-      <link>https://gsajko.github.io/posts/custom-twitter-feed-part1/</link>
+      <link>https://gsajko.github.io/blog/posts/custom-twitter-feed-part1/</link>
       <pubDate>Tue, 26 Jan 2021 10:15:57 +0100</pubDate>
       
-      <guid>https://gsajko.github.io/posts/custom-twitter-feed-part1/</guid>
+      <guid>https://gsajko.github.io/blog/posts/custom-twitter-feed-part1/</guid>
       <description>Introduction This is an introductory post about the project I&amp;rsquo;m making. I&amp;rsquo;m in process of reading Machine Learning Bookcamp Book by Alexey Grigorev . The main &amp;ldquo;meta&amp;rdquo; concept behind this book is the idea, that the best way to learn Machine Learning is by doing projects.
 In parallel, I follow Applied ML course by Goku Mohandas .
 I will try to incorporate things I learn from both of those sources while doing this project.</description>
