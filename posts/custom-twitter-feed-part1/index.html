@@ -17,8 +17,8 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Custom twitter feed project - Part 1" />
   <meta name="twitter:description" content="Project journal about making custom twitter feed using Machine Learning"/>
-  <meta name="twitter:site" content="https://twitter.com/gsajko" />
-  <meta name="twitter:creator" content="https://twitter.com/gsajko" />
+  <meta name="twitter:site" content="https://twitter.com/saiko_grzegorz" />
+  <meta name="twitter:creator" content="https://twitter.com/saiko_grzegorz" />
   
 
   <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
@@ -170,25 +170,30 @@ For example:</p>
 <h3 id="twitter-feed-sucks">Twitter feed sucks<a class="anchor" href="#twitter-feed-sucks">#</a></h3>
 <p>I use Twitter a lot, so based on the premise that &ldquo;attention is scarce&rdquo;, I don&rsquo;t find it useful.</p>
 <p>I have to admit, that Twitter newsfeed is good at recommencing to me tweets (and putting them high on my newsfeed), that are interesting for me. This is even more visible when I don&rsquo;t visit &ldquo;Home&rdquo; tab for a long time. If you refresh your newsfeed every 5 minutes it becomes worse immediately. But at the same time, it floods me with unrelated stuff trying to drive my engagement even more - suggest me &ldquo;topics to follow&rdquo;, and also recommends tweets related to outrage-of-the-day, suggest viral tweets. It just adds to the noise. Muted words don&rsquo;t work for me as intended. Twitter is good as entertainment. Not as a source of information.</p>
-<h2 id="other-reasons-for-doing-this-project">Other reasons for doing this project<a class="anchor" href="#other-reasons-for-doing-this-project">#</a></h2>
-<p>Aside from &ldquo;solving&rdquo; this problem, there are several other reasons, why I&rsquo;m interested in doing this.</p>
-<h3 id="personal-computation">personal computation<a class="anchor" href="#personal-computation">#</a></h3>
-<p>I&rsquo;m partial to ideas around &ldquo;personal computation&rdquo; where users control their own data and algorithms. With this project, I wanted to learn more about this, about challenges that arise when trying to serve models locally, and how to train them with a small about of data.</p>
-<h3 id="learning-about-recsys">learning about RecSys<a class="anchor" href="#learning-about-recsys">#</a></h3>
-<p>At the same time, I want to learn more about using RecSys in &ldquo;real life&rdquo; settings and learn how to improve them with time.</p>
-<h3 id="software-engineering">software engineering<a class="anchor" href="#software-engineering">#</a></h3>
-<p>This project is also my first attempt to have a project existing outside of Jupyter Notebooks - with linting, Unit Tests, Makefile, writing documentation, etc.</p>
-<p>As show here 👉 <a href="https://eugeneyan.com/writing/setting-up-python-project-for-automation-and-collaboration/" 
+<h3 id="why-twitter-solution-is-bad">Why twitter solution is bad?<a class="anchor" href="#why-twitter-solution-is-bad">#</a></h3>
+<p>Twitter has other incentives them me: The current twitter solution maximizes user engagement, not maximizing signal to noise.</p>
+<p>And I want to filter out things that decay quickly with time.</p>
+<h4 id="the-relation-between-relevant-and-recent">the relation between relevant and recent</h4>
+<p>The chart used in this <a href="https://mobile.twitter.com/GruPiotr/status/1330507931549306882" 
   
    target="_blank" rel="noreferrer noopener" 
->How to Set Up a Python Project For Automation and Collaboration</a>
-</p>
+>tweet</a>
+ is great at showcasing how the relevance of information can differ, and its relation to time since published.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Spotify needs Discover Weekly for podcast episodes. <br><br>It&#39;s tough because timing matters. I&#39;m really not gonna enjoy a news briefing from 2 weeks ago.<br><br>There needs to be a separate model that approximates relevance vs time for every episode. I&#39;m expecting it to look like this: <a href="https://t.co/vZp7c4b9Ly">pic.twitter.com/vZp7c4b9Ly</a></p>&mdash; Piotr Grudzień (@GruPiotr) <a href="https://twitter.com/GruPiotr/status/1330507931549306882?ref_src=twsrc%5Etfw">November 22, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p><img src="/img/20210125121217.png" alt="relevence chart"></p>
+<p>I want to get rid of all information represented by &ldquo;blue&rdquo; curves, and most represented by &ldquo;green&rdquo; curves.</p>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
 <p>Based <a href="https://madewithml.com/#applied-ml" 
   
    target="_blank" rel="noreferrer noopener" 
 >Applied ML</a>
- course - we need to first <strong>visualize</strong> solution, <strong>understand</strong> how the problem is currently being solved, and <strong>design</strong> a baseline.</p>
+ course - we need to first <strong>visualize</strong> solution, <strong>understand</strong> how the problem is currently being solved (<a href="#why-twitter-solution-is-bad" 
+  
+  
+>see above</a>
+), and <strong>design</strong> a baseline.</p>
 <h3 id="visualize-an-ideal-solution">Visualize an ideal solution<a class="anchor" href="#visualize-an-ideal-solution">#</a></h3>
 <h4 id="custom-twitter-feed">Custom twitter feed</h4>
 <p>You get your custom newsfeed.</p>
@@ -210,21 +215,6 @@ this is my mockup of how would that look:</p>
 <img src="/img/20210125113745.png" alt="twitter mockup 1"></p>
 <p>and can choose newsfeed generated by 3rd party like you can choose between &ldquo;Latest&rdquo; and &ldquo;Home&rdquo;.
 <img src="/img/20210125113932.png" alt="twitter mockup 2"></p>
-<h3 id="understand">Understand<a class="anchor" href="#understand">#</a></h3>
-<h4 id="why-twitter-solution-is-bad">Why twitter solution is bad?</h4>
-<p>Twitter has other incentives them me: The current twitter solution maximizes user engagement, not maximizing signal to noise.</p>
-<p>And I want to filter out things that decay quickly with time.</p>
-<h4 id="the-relation-between-relevant-and-recent">the relation between relevant and recent</h4>
-<p>The chart used in this <a href="https://mobile.twitter.com/GruPiotr/status/1330507931549306882" 
-  
-   target="_blank" rel="noreferrer noopener" 
->tweet</a>
- is great at showcasing how the relevance of information can differ, and its relation to time since published.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Spotify needs Discover Weekly for podcast episodes. <br><br>It&#39;s tough because timing matters. I&#39;m really not gonna enjoy a news briefing from 2 weeks ago.<br><br>There needs to be a separate model that approximates relevance vs time for every episode. I&#39;m expecting it to look like this: <a href="https://t.co/vZp7c4b9Ly">pic.twitter.com/vZp7c4b9Ly</a></p>&mdash; Piotr Grudzień (@GruPiotr) <a href="https://twitter.com/GruPiotr/status/1330507931549306882?ref_src=twsrc%5Etfw">November 22, 2020</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p><img src="/img/20210125121217.png" alt="relevence chart"></p>
-<p>I want to get rid of all information represented by &ldquo;blue&rdquo; curves, and most represented by &ldquo;green&rdquo; curves.</p>
 <h3 id="design">Design<a class="anchor" href="#design">#</a></h3>
 <h4 id="baseline">baseline:</h4>
 <ul>
@@ -264,6 +254,19 @@ this is my mockup of how would that look:</p>
 </ul>
 </li>
 </ul>
+<h2 id="other-reasons-for-doing-this-project">Other reasons for doing this project<a class="anchor" href="#other-reasons-for-doing-this-project">#</a></h2>
+<p>Aside from &ldquo;solving&rdquo; this problem, there are several other reasons, why I&rsquo;m interested in doing this.</p>
+<h3 id="personal-computation">personal computation<a class="anchor" href="#personal-computation">#</a></h3>
+<p>I&rsquo;m partial to ideas around &ldquo;personal computation&rdquo; where users control their own data and algorithms. With this project, I wanted to learn more about this, about challenges that arise when trying to serve models locally, and how to train them with a small about of data.</p>
+<h3 id="learning-about-recsys">learning about RecSys<a class="anchor" href="#learning-about-recsys">#</a></h3>
+<p>At the same time, I want to learn more about using RecSys in &ldquo;real life&rdquo; settings and learn how to improve them with time.</p>
+<h3 id="software-engineering">software engineering<a class="anchor" href="#software-engineering">#</a></h3>
+<p>This project is also my first attempt to have a project existing outside of Jupyter Notebooks - with linting, Unit Tests, Makefile, writing documentation, etc.</p>
+<p>As show here 👉 <a href="https://eugeneyan.com/writing/setting-up-python-project-for-automation-and-collaboration/" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>How to Set Up a Python Project For Automation and Collaboration</a>
+</p>
 
 
               
@@ -298,7 +301,7 @@ this is my mockup of how would that look:</p>
      
     
       <a class="social-icons__link" rel="me" title="Twitter"
-         href="https://twitter.com/gsajko"
+         href="https://twitter.com/saiko_grzegorz"
          target="_blank" rel="noopener">
         <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/twitter.svg')"></div>
       </a>
@@ -339,6 +342,13 @@ this is my mockup of how would that look:</p>
         <li><a href="#attention">Attention</a></li>
         <li><a href="#how-to-deal-with-information-overload">How to deal with information overload?</a></li>
         <li><a href="#twitter-feed-sucks">Twitter feed sucks</a></li>
+        <li><a href="#why-twitter-solution-is-bad">Why twitter solution is bad?</a></li>
+      </ul>
+    </li>
+    <li><a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#visualize-an-ideal-solution">Visualize an ideal solution</a></li>
+        <li><a href="#design">Design</a></li>
       </ul>
     </li>
     <li><a href="#other-reasons-for-doing-this-project">Other reasons for doing this project</a>
@@ -346,13 +356,6 @@ this is my mockup of how would that look:</p>
         <li><a href="#personal-computation">personal computation</a></li>
         <li><a href="#learning-about-recsys">learning about RecSys</a></li>
         <li><a href="#software-engineering">software engineering</a></li>
-      </ul>
-    </li>
-    <li><a href="#solution">Solution</a>
-      <ul>
-        <li><a href="#visualize-an-ideal-solution">Visualize an ideal solution</a></li>
-        <li><a href="#understand">Understand</a></li>
-        <li><a href="#design">Design</a></li>
       </ul>
     </li>
   </ul>
