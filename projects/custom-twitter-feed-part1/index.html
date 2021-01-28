@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Custom twitter feed project - Part 1 | codex</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="Project journal about making custom twitter feed using Machine Learning">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Custom twitter feed project - Part 1" />
+  <meta name="twitter:description" content="Project journal about making custom twitter feed using Machine Learning"/>
+  <meta name="twitter:site" content="https://twitter.com/saiko_grzegorz" />
+  <meta name="twitter:creator" content="https://twitter.com/saiko_grzegorz" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.b60e0932fe1c50c3d7c5b4f83ee9e4592363654d0f2abf05bbd0678d5b8a214c.css" integrity="sha256-tg4JMv4cUMPXxbT4PunkWSNjZU0PKr8Fu9BnjVuKIUw="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.e4877f04a736cd454e7bcd293fcf3ac62eadc9c32dcf96832017479af7c427fe.css" integrity="sha256-5Id/BKc2zUVOe80pP886xi6tycMtz5aDIBdHmvfEJ/4="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/gsajko.github.io\/projects\/custom-twitter-feed-part1\/",
+      "name": "Custom twitter feed project - Part 1",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": "Project journal about making custom twitter feed using Machine Learning"
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+        <a  href="/">/home</a>
+      </li>
+    
+      <li>
+        <a  href="/about">about</a>
+      </li>
+    
+      <li>
+        <a  href="/projects">projects</a>
+      </li>
+    
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Custom twitter feed project - Part 1</h1>
+            <time datetime="2021-01-26 10:15:57 &#43;0100 CET" class="post__date">Jan 26 2021</time> 
+          </header>
+          <article class="post__content">
+              
+<h2 id="introduction">Introduction<a class="anchor" href="#introduction">#</a></h2>
+<p>This is an introductory post about the project I&rsquo;m making.
+I&rsquo;m in process of reading <a href="https://www.manning.com/books/machine-learning-bookcamp" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Machine Learning Bookcamp Book</a>
+ by <a href="https://twitter.com/Al_Grigor" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Alexey Grigorev</a>
+. The main &ldquo;meta&rdquo; concept behind this book is the idea, that the best way to learn Machine Learning is by <em>doing projects</em>.</p>
+<p>In parallel, I follow <a href="https://madewithml.com/#applied-ml" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Applied ML</a>
+ course by <a href="https://twitter.com/GokuMohandas" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Goku Mohandas</a>
+.</p>
+<p>I will try to incorporate things I learn from both of those sources while doing this project.</p>
+<p>For this post, I&rsquo;ll be loosely using the framework proposed in &ldquo;Applied ML&rdquo; course.</p>
+<h2 id="the-problem-attention-is-scarce-and-twitter-feed-sucks">The Problem: Attention is scarce and Twitter feed sucks.<a class="anchor" href="#the-problem-attention-is-scarce-and-twitter-feed-sucks">#</a></h2>
+<h3 id="attention">Attention<a class="anchor" href="#attention">#</a></h3>
+<p>There are many ways to think about attention.
+For example:</p>
+<p><a href="https://twitter.com/balajis/status/1339214847909609473" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Attention is consuming information</a>
+</p>
+<p><a href="https://www.newyorker.com/magazine/2013/01/07/a-pickpockets-tale" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Attention is like a water</a>
+</p>
+<p>I like how Herbert A. Simon in <a href="https://digitalcollections.library.cmu.edu/awweb/awarchive?type=file&amp;item=33748" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Designing organizations for an information-rich world</a>
+ reverses &ldquo;Attention is consuming information&rdquo;.</p>
+<p>We&rsquo;re not consuming information, <strong>information is consuming our attention</strong>.</p>
+<blockquote>
+<p>Hence a wealth of information creates a poverty of attention and a need to allocate that attention efficiently among the overabundance of information sources that might consume it.</p>
+</blockquote>
+<p>That means that <strong>attention is scarce</strong>. We should be mindful about how we allocate our attention. At the same time, Internet media are overflowing with information.</p>
+<h3 id="how-to-deal-with-information-overload">How to deal with information overload?<a class="anchor" href="#how-to-deal-with-information-overload">#</a></h3>
+<h4 id="reduce-by-filtering">Reduce by filtering</h4>
+<p>We can reduce information overload, by filtering out information that is not relevant to us.</p>
+<h4 id="focus-on-what-matters-most">Focus on what matters most.</h4>
+<p>This can be different from person to person. But this need to comes from that personal deep values.</p>
+<p>I like Cal Newport&rsquo;s &ldquo;The Minimalist Technology Screen&rdquo; approach (from his book <a href="https://www.calnewport.com/books/digital-minimalism/" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Digital Minimalism</a>
+)</p>
+<blockquote>
+<p>To allow an optional technology back into your life at the end of the digital declutter, it must:</p>
+<p>Serve something you deeply value (offering some benefit is not enough).</p>
+<p>Be the best way to use technology to serve this value (if it’s not, replace it with something better).</p>
+<p>Have a role in your life that is constrained with a standard operating procedure that specifies when and how you use it.</p>
+</blockquote>
+<h3 id="twitter-feed-sucks">Twitter feed sucks<a class="anchor" href="#twitter-feed-sucks">#</a></h3>
+<p>I use Twitter a lot, so based on the premise that &ldquo;attention is scarce&rdquo;, I don&rsquo;t find it useful.</p>
+<p>I have to admit, that Twitter newsfeed is good at recommencing to me tweets (and putting them high on my newsfeed), that are interesting for me. This is even more visible when I don&rsquo;t visit &ldquo;Home&rdquo; tab for a long time. If you refresh your newsfeed every 5 minutes it becomes worse immediately. But at the same time, it floods me with unrelated stuff trying to drive my engagement even more - suggest me &ldquo;topics to follow&rdquo;, and also recommends tweets related to outrage-of-the-day, suggest viral tweets. It just adds to the noise. Muted words don&rsquo;t work for me as intended. Twitter is good as entertainment. Not as a source of information.</p>
+<h3 id="why-twitter-solution-is-bad">Why twitter solution is bad?<a class="anchor" href="#why-twitter-solution-is-bad">#</a></h3>
+<p>Twitter has other incentives them me: The current twitter solution maximizes user engagement, not maximizing signal to noise.</p>
+<p>And I want to filter out things that decay quickly with time.</p>
+<h4 id="the-relation-between-relevant-and-recent">the relation between relevant and recent</h4>
+<p>The chart used in this <a href="https://mobile.twitter.com/GruPiotr/status/1330507931549306882" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>tweet</a>
+ is great at showcasing how the relevance of information can differ, and its relation to time since published.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Spotify needs Discover Weekly for podcast episodes. <br><br>It&#39;s tough because timing matters. I&#39;m really not gonna enjoy a news briefing from 2 weeks ago.<br><br>There needs to be a separate model that approximates relevance vs time for every episode. I&#39;m expecting it to look like this: <a href="https://t.co/vZp7c4b9Ly">pic.twitter.com/vZp7c4b9Ly</a></p>&mdash; Piotr Grudzień (@GruPiotr) <a href="https://twitter.com/GruPiotr/status/1330507931549306882?ref_src=twsrc%5Etfw">November 22, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p><img src="/img/20210125121217.png" alt="relevence chart"></p>
+<p>I want to get rid of all information represented by &ldquo;blue&rdquo; curves, and most represented by &ldquo;green&rdquo; curves.</p>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<p>Based <a href="https://madewithml.com/#applied-ml" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Applied ML</a>
+ course - we need to first <strong>visualize</strong> solution, <strong>understand</strong> how the problem is currently being solved (<a href="#why-twitter-solution-is-bad" 
+  
+  
+>see above</a>
+), and <strong>design</strong> a baseline.</p>
+<h3 id="visualize-an-ideal-solution">Visualize an ideal solution<a class="anchor" href="#visualize-an-ideal-solution">#</a></h3>
+<h4 id="custom-twitter-feed">Custom twitter feed</h4>
+<p>You get your custom newsfeed.</p>
+<p>It works in a two prongs approach: filtering and ranking.</p>
+<p>It <strong>filters out</strong> irrelevant stuff based on:</p>
+<ul>
+<li>is it news?</li>
+<li>user preferences - mute words, mute accounts</li>
+</ul>
+<p>It <strong>ranks tweets</strong> and puts high on the list tweets that</p>
+<ul>
+<li>have a low noise-to-signal ratio</li>
+<li>are evergreen</li>
+</ul>
+<p>And how to &ldquo;serve&rdquo; them?</p>
+<p>An ideal solution would be if twitter would enable API for loading custom tweets in their &ldquo;Home&rdquo; tab.
+this is my mockup of how would that look:</p>
+<p>You click on the ✨ icon
+<img src="/img/20210125113745.png" alt="twitter mockup 1"></p>
+<p>and can choose newsfeed generated by 3rd party like you can choose between &ldquo;Latest&rdquo; and &ldquo;Home&rdquo;.
+<img src="/img/20210125113932.png" alt="twitter mockup 2"></p>
+<h3 id="design">Design<a class="anchor" href="#design">#</a></h3>
+<h4 id="baseline">baseline:</h4>
+<ul>
+<li>getting data: using cron jobs, grab tweets from a <code>home</code> endpoint to SQL, using <a href="https://github.com/dogsheep/twitter-to-sqlite" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>twitter-to-sqlite</a>
+</li>
+<li>using the rule-based approach to <strong>filter out</strong> tweets</li>
+<li>re-using this data, to <strong>classify</strong> other tweets, that didn&rsquo;t get filter out (<code>is tweet not-relevant</code>)</li>
+<li>send them to a collection inside of <a href="https://tweetdeck.twitter.com/" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Tweetdeck</a>
+.
+<ul>
+<li>I have thought about different approaches how to serve those tweets.
+<ul>
+<li>serving web app with Flask and tweets embedded.</li>
+<li>serving using streamlit.</li>
+</ul>
+</li>
+<li>Using Tweetdeck is the best, because it allows me to interact with tweets with ease - I can <em>like</em> and <em>retweet</em> from there.</li>
+<li>Additionally, I can create more than one collection - I can easily drag/copy tweets from one collection to another - this enables me for easy labeling of tweets - just drag tweet to <code>not_relevant</code> collection.</li>
+</ul>
+</li>
+</ul>
+<h4 id="next">next:</h4>
+<ul>
+<li><strong>classify</strong> remaining tweets based on engagement - (<code>tweet is engaging</code>, <code>tweet is not engaging</code> )
+<ul>
+<li>❗️ this requires me to be more conscious and mindful about which tweets I interact with ❗️
+<ul>
+<li>I need to show to &ldquo;algorithm&rdquo;, that I prefer a particular type of tweet.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="other-reasons-for-doing-this-project">Other reasons for doing this project<a class="anchor" href="#other-reasons-for-doing-this-project">#</a></h2>
+<p>Aside from &ldquo;solving&rdquo; this problem, there are several other reasons, why I&rsquo;m interested in doing this.</p>
+<h3 id="personal-computation">personal computation<a class="anchor" href="#personal-computation">#</a></h3>
+<p>I&rsquo;m partial to ideas around &ldquo;personal computation&rdquo; where users control their own data and algorithms. With this project, I wanted to learn more about this, about challenges that arise when trying to serve models locally, and how to train them with a small about of data.</p>
+<h3 id="learning-about-recsys">learning about RecSys<a class="anchor" href="#learning-about-recsys">#</a></h3>
+<p>At the same time, I want to learn more about using RecSys in &ldquo;real life&rdquo; settings and learn how to improve them with time.</p>
+<h3 id="software-engineering">software engineering<a class="anchor" href="#software-engineering">#</a></h3>
+<p>This project is also my first attempt to have a project existing outside of Jupyter Notebooks - with linting, Unit Tests, Makefile, writing documentation, etc.</p>
+<p>As show here 👉 <a href="https://eugeneyan.com/writing/setting-up-python-project-for-automation-and-collaboration/" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>How to Set Up a Python Project For Automation and Collaboration</a>
+</p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/twitter/">twitter</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/custom_feed/">custom_feed</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/projects/">projects</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Twitter"
+         href="https://twitter.com/saiko_grzegorz"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/twitter.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/gsajko"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="LinkedIn"
+         href="https://www.linkedin.com/in/grzegorz-sajko/"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/linkedin.svg')"></div>
+      </a>
+    
+     
+</div>
+
+            <p>© 2021</p>
+          </footer>
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#the-problem-attention-is-scarce-and-twitter-feed-sucks">The Problem: Attention is scarce and Twitter feed sucks.</a>
+      <ul>
+        <li><a href="#attention">Attention</a></li>
+        <li><a href="#how-to-deal-with-information-overload">How to deal with information overload?</a></li>
+        <li><a href="#twitter-feed-sucks">Twitter feed sucks</a></li>
+        <li><a href="#why-twitter-solution-is-bad">Why twitter solution is bad?</a></li>
+      </ul>
+    </li>
+    <li><a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#visualize-an-ideal-solution">Visualize an ideal solution</a></li>
+        <li><a href="#design">Design</a></li>
+      </ul>
+    </li>
+    <li><a href="#other-reasons-for-doing-this-project">Other reasons for doing this project</a>
+      <ul>
+        <li><a href="#personal-computation">personal computation</a></li>
+        <li><a href="#learning-about-recsys">learning about RecSys</a></li>
+        <li><a href="#software-engineering">software engineering</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+</body>
+
+</html>
