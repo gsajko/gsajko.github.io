@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>How to get avoid distractions while using Twitter | codex</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="How to get the most information out of Twitter while avoiding distractions">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="How to get avoid distractions while using Twitter" />
+  <meta name="twitter:description" content="How to get the most information out of Twitter while avoiding distractions"/>
+  <meta name="twitter:site" content="https://twitter.com/saiko_grzegorz" />
+  <meta name="twitter:creator" content="https://twitter.com/saiko_grzegorz" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.b60e0932fe1c50c3d7c5b4f83ee9e4592363654d0f2abf05bbd0678d5b8a214c.css" integrity="sha256-tg4JMv4cUMPXxbT4PunkWSNjZU0PKr8Fu9BnjVuKIUw="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.e4877f04a736cd454e7bcd293fcf3ac62eadc9c32dcf96832017479af7c427fe.css" integrity="sha256-5Id/BKc2zUVOe80pP886xi6tycMtz5aDIBdHmvfEJ/4="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/gsajko.github.io\/posts\/avoid_twitter_distractions\/",
+      "name": "How to get avoid distractions while using Twitter",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": "How to get the most information out of Twitter while avoiding distractions"
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+        <a  href="/">/home</a>
+      </li>
+    
+      <li>
+        <a  href="/about">about</a>
+      </li>
+    
+      <li>
+        <a  href="/posts">blog</a>
+      </li>
+    
+      <li>
+        <a  href="/projects">projects</a>
+      </li>
+    
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">How to get avoid distractions while using Twitter</h1>
+            <time datetime="2020-02-01 18:24:01 &#43;0200 &#43;0200" class="post__date">Feb 1 2020</time> 
+          </header>
+          <article class="post__content">
+              
+<p><strong>TLDR</strong>: use <a href="https://en.wikipedia.org/wiki/UBlock_Origin" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>uBlock Origin</a>
+</p>
+<h2 id="block-stuff-with-ublock-origin">block stuff with uBlock Origin<a class="anchor" href="#block-stuff-with-ublock-origin">#</a></h2>
+<p>uBlock Origin is a browser plugin, which I use mainly as an adblocker.
+But you can also use its &ldquo;picker mode&rdquo; to block custom elements from a website.</p>
+<p>I used it for example to block out &ldquo;Trends for you&rdquo;</p>
+<p><img src="/img/20210108131748.png" alt="trends for you"></p>
+<p>But it was not working correctly every time.</p>
+<p>I tried this:
+<a href="https://schleiss.io/fixing-twitter-design-with-extension/">https://schleiss.io/fixing-twitter-design-with-extension/</a>
+but it didn&rsquo;t work.</p>
+<p>So I found an even better solution:</p>
+<p>Go to the uBlockOrigin dashboard, you should see something like this:</p>
+<p><img src="/img/20210201182747.png" alt="dashboard"></p>
+<p>This is what you want to paste in there (you can change the date)</p>
+<pre><code>! 2021-01-08 https://twitter.com
+twitter.com/i/api/2/timeline/home.json
+twitter.com/i/api/2/guide.json
+twitter.com/i/api/1.1/users/recommendations.json
+</code></pre>
+<p>It will prevent feed from loading (<code>home.json</code>), will block &ldquo;people to follow&rdquo; (<code>recommendations.json</code>) and trends(<code>guide.json</code>)</p>
+<p>Then you can use uBlockOrigin to block out &ldquo;Try again&rdquo; parts for a cleaner look.</p>
+<p><img src="/img/20210108160521.png" alt="s"></p>
+<p>This is the final effect:</p>
+<p><img src="/img/20210201180348.png" alt=""></p>
+<p>So &hellip; how to view tweets?</p>
+<h2 id="lists">Lists<a class="anchor" href="#lists">#</a></h2>
+<p>Lists! I have a tonne of them.</p>
+<p><img src="/img/20210201181049.png" alt=""></p>
+<p>I group people into lists and use them as needed.
+You can even use lists created by other people.
+If I look for great curated lists, <a href="https://mobile.twitter.com/michael_nielsen" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>@michael_nielsen</a>
+ lists are my go-to.</p>
+<p><a href="https://mobile.twitter.com/michael_nielsen/lists">https://mobile.twitter.com/michael_nielsen/lists</a></p>
+<p>Instead of using &ldquo;Home&rdquo;, I&rsquo;m using one list, here called <em>rev_list</em>, which consist of 50-60 people. People whose tweets I don&rsquo;t want to miss. But I think about 20-30 of them are active, so there isn&rsquo;t a lot of tweets.</p>
+<p>Visiting it once per day, it takes about 15 min to scroll through not-seen tweets.</p>
+<p>If you MUST use &ldquo;Home&rdquo;, just disable uBlockOrigin.</p>
+<p>I found, that using &ldquo;Home&rdquo; rarely gives good results! Twitter algo really flexes its recommendation muscles 💪.</p>
+<p><strong>BONUS</strong> - <a href="../use_twitter_for_research" 
+  
+  
+>How to research stuff using Twitter</a>
+</p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/twitter/">twitter</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/distraction/">distraction</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/focus/">focus</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+
+  
+    <a class="pagination__item" href="https://gsajko.github.io/posts/use_twitter_for_research/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >How to research stuff using Twitter</span>
+    </a>
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Twitter"
+         href="https://twitter.com/saiko_grzegorz"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/twitter.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/gsajko"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="LinkedIn"
+         href="https://www.linkedin.com/in/grzegorz-sajko/"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/linkedin.svg')"></div>
+      </a>
+    
+     
+</div>
+
+            <p>© 2021</p>
+          </footer>
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#block-stuff-with-ublock-origin">block stuff with uBlock Origin</a></li>
+    <li><a href="#lists">Lists</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+</body>
+
+</html>

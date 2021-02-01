@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>distraction on codex</title>
+    <link>https://gsajko.github.io/tags/distraction/</link>
+    <description>Recent content in distraction on codex</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Sat, 01 Feb 2020 18:24:01 +0200</lastBuildDate><atom:link href="https://gsajko.github.io/tags/distraction/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to get avoid distractions while using Twitter</title>
+      <link>https://gsajko.github.io/posts/avoid_twitter_distractions/</link>
+      <pubDate>Sat, 01 Feb 2020 18:24:01 +0200</pubDate>
+      
+      <guid>https://gsajko.github.io/posts/avoid_twitter_distractions/</guid>
+      <description>TLDR: use uBlock Origin block stuff with uBlock Origin uBlock Origin is a browser plugin, which I use mainly as an adblocker. But you can also use its &amp;ldquo;picker mode&amp;rdquo; to block custom elements from a website.
+I used it for example to block out &amp;ldquo;Trends for you&amp;rdquo;
+But it was not working correctly every time.
+I tried this: https://schleiss.io/fixing-twitter-design-with-extension/ but it didn&amp;rsquo;t work.
+So I found an even better solution:</description>
+    </item>
+    
+  </channel>
+</rss>

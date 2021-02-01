@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>How to research stuff using Twitter | codex</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="How to get useful informations out of Twitter">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="How to research stuff using Twitter" />
+  <meta name="twitter:description" content="How to get useful informations out of Twitter"/>
+  <meta name="twitter:site" content="https://twitter.com/saiko_grzegorz" />
+  <meta name="twitter:creator" content="https://twitter.com/saiko_grzegorz" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.b60e0932fe1c50c3d7c5b4f83ee9e4592363654d0f2abf05bbd0678d5b8a214c.css" integrity="sha256-tg4JMv4cUMPXxbT4PunkWSNjZU0PKr8Fu9BnjVuKIUw="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.e4877f04a736cd454e7bcd293fcf3ac62eadc9c32dcf96832017479af7c427fe.css" integrity="sha256-5Id/BKc2zUVOe80pP886xi6tycMtz5aDIBdHmvfEJ/4="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/gsajko.github.io\/posts\/use_twitter_for_research\/",
+      "name": "How to research stuff using Twitter",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": "How to get useful informations out of Twitter"
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+        <a  href="/">/home</a>
+      </li>
+    
+      <li>
+        <a  href="/about">about</a>
+      </li>
+    
+      <li>
+        <a  href="/posts">blog</a>
+      </li>
+    
+      <li>
+        <a  href="/projects">projects</a>
+      </li>
+    
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">How to research stuff using Twitter</h1>
+            <time datetime="2020-02-01 19:24:01 &#43;0200 &#43;0200" class="post__date">Feb 1 2020</time> 
+          </header>
+          <article class="post__content">
+              
+<h2 id="key-to-this-method---follow-lots-of-opinionated-people">Key to this method - follow lots of opinionated people.<a class="anchor" href="#key-to-this-method---follow-lots-of-opinionated-people">#</a></h2>
+<p>I follow many people - more than 600. There are many ML experts. So if I&rsquo;m researching what methods to use, what algorithms, or just want to learn about a subject I&rsquo;ll use Twitter first for that.</p>
+<h2 id="using-search">Using search<a class="anchor" href="#using-search">#</a></h2>
+<p>Let&rsquo;s say I want to learn how to do &ldquo;topic modeling&rdquo; on a dataset made of tweets.
+I just use search, remembering to check &ldquo;<strong>People you follow</strong>&rdquo;</p>
+<p><img src="/img/20210201183635.png" alt="search"></p>
+<p>I especially liked this tweet:
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">If you&#39;re tied to traditional &quot;topic modeling&quot; as LDA, I usually give up on tweets. An alternative approach: BERT embeddings/Universal Sentence Encoder → UMAP → HDBSCAN sometimes gets me somewhere.</p>&mdash; Peter Baumgartner (@pmbaumgartner) <a href="https://twitter.com/pmbaumgartner/status/1153485963794046981?ref_src=twsrc%5Etfw">July 23, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+<p>Without any prior knowledge from that one tweet by <a href="https://twitter.com/pmbaumgartner/" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>@pmbaumgartner</a>
+, you can learn that there is a traditional topic modeling method called &ldquo;LDA&rdquo;, and it doesn&rsquo;t provide good results. &ldquo;BERT embeddings/Universal Sentence Encoder → UMAP → HDBSCAN&rdquo; seem to work better.</p>
+<p>But let&rsquo;s look at the whole discussion.</p>
+<h2 id="treeverse">Treeverse<a class="anchor" href="#treeverse">#</a></h2>
+<p>I go to the &ldquo;main&rdquo; tweet and use a browser plugin called <a href="https://treeverse.app/" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Treeverse</a>
+</p>
+<p>This is the tweet that started the whole discussion.
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hey <a href="https://twitter.com/hashtag/NLProc?src=hash&amp;ref_src=twsrc%5Etfw">#NLProc</a> folks, do you have any tips for doing topic modelling on Twitter text? The main trick I see coming up in the papers I&#39;ve found is concatenating tweets together by hashtag (or other means) to handle the short document problem. Any other tricks?</p>&mdash; Ned Letcher (@nletcher) <a href="https://twitter.com/nletcher/status/1153456432122978304?ref_src=twsrc%5Etfw">July 23, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+It gives me a good overview - Twitter sometimes hides some tweets, so I prefer to use Treeverse.
+<img src="/img/20210201184238.png" alt="Treeverse"></p>
+<p>One other tweet contained tricks on how to improve the performance of modeling:</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Concatenate by user, or by time (days, hours). Concat quote tweets. Maybe replies also.<br><br>Keep original + copy of Embiggened tweet: replace @ with names, split <a href="https://twitter.com/hashtag/multiwordhashtags?src=hash&amp;ref_src=twsrc%5Etfw">#multiwordhashtags</a> (GATE has an implementation). Replace URLs with page title or card meta tag.<br><br>Try NMF topic models!</p>&mdash; Igor Brigadir (@IgorBrigadir) <a href="https://twitter.com/IgorBrigadir/status/1153464471857377288?ref_src=twsrc%5Etfw">July 23, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>There was also a response by this guy:</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">You can densify your matrix by doing diffusion over the column space under word-vector similarity.</p>&mdash; Leland McInnes (@leland_mcinnes) <a href="https://twitter.com/leland_mcinnes/status/1153488195432132614?ref_src=twsrc%5Etfw">July 23, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Remember &ldquo;BERT embeddings/Universal Sentence Encoder → UMAP → HDBSCAN&rdquo; from the previous tweet?
+Leland happens to be the researcher behind UMAP and HDBSCAN. Instant &ldquo;follow&rdquo; for me.</p>
+<p><img src="/img/20210201184524.png" alt="Leland"></p>
+<p>Ok, so what about LDA? What do other people think about it?
+I repeated the search, remembering to check &ldquo;People you follow&rdquo;.</p>
+<p>This time I needed to dig a little deeper, focused on this tweet:</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">What are y&#39;alls current favorite unsupervised classification/clustering approaches for text? So far I&#39;ve looked at:<br><br>🔡 LDA<br>🔡 Embeddings (doc2vec) + clustering (k-means<br>🔡 Unsupervised keyword extraction (YAKE)<br><br>Is there something else I should consider? 🤔📝</p>&mdash; Rachael Tatman (@rctatman) <a href="https://twitter.com/rctatman/status/1133806246182604800?ref_src=twsrc%5Etfw">May 29, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>The tree got way bigger (Rachael has 22k followers)</p>
+<p><img src="/img/20210201185406.png" alt=""></p>
+<p>But if you zoom in:</p>
+<p><img src="/img/20210201185506.png" alt=""></p>
+<p>We see familiar faces (<a href="https://twitter.com/pmbaumgartner/" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>@pmbaumgartner</a>
+, <a href="https://twitter.com/leland_mcinnes" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>leland_mcinnes</a>
+)</p>
+<p>Leland even provides code examples for his approach.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Here&#39;s a very quick example: <a href="https://t.co/Bu7LLeG11C">https://t.co/Bu7LLeG11C</a><br><br>Not anything major, but hopefully good enough for a very quick/naive approach to demonstrate the possibilities.</p>&mdash; Leland McInnes (@leland_mcinnes) <a href="https://twitter.com/leland_mcinnes/status/1133908055689781249?ref_src=twsrc%5Etfw">May 30, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p><a href="https://gist.github.com/lmcinnes/fbb63592b3225678390f08e50eda2b61">https://gist.github.com/lmcinnes/fbb63592b3225678390f08e50eda2b61</a></p>
+<p>Twitter is good for finding different approaches/methods, way better than any other forum-like solution.</p>
+<p>But the key is following correct people.</p>
+<p>And <strong>do bias to the side of more opinionated folks</strong>.</p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/twitter/">twitter</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/researching/">researching</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/learning/">learning</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://gsajko.github.io/posts/avoid_twitter_distractions/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">How to get avoid distractions while using Twitter</span>
+    </a>
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Twitter"
+         href="https://twitter.com/saiko_grzegorz"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/twitter.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/gsajko"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="LinkedIn"
+         href="https://www.linkedin.com/in/grzegorz-sajko/"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/linkedin.svg')"></div>
+      </a>
+    
+     
+</div>
+
+            <p>© 2021</p>
+          </footer>
+          </div>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+
+
+</body>
+
+</html>
