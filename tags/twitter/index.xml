@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sun, 28 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://gsajko.github.io/tags/twitter/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Feb 2021 16:43:08 +0100</lastBuildDate><atom:link href="https://gsajko.github.io/tags/twitter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Part 2: Collecting and displaying data</title>
       <link>https://gsajko.github.io/projects/part2_filtering_out/</link>
-      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 18 Feb 2021 16:43:08 +0100</pubDate>
       
       <guid>https://gsajko.github.io/projects/part2_filtering_out/</guid>
       <description>Collecting training data Collecting data I collect Twitter data using a library made by Simon Willison - twitter-to-sql .
