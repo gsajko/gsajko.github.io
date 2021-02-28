@@ -7,9 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Tue, 26 Jan 2021 10:15:57 +0100</lastBuildDate><atom:link href="https://gsajko.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Feb 2021 16:43:08 +0100</lastBuildDate><atom:link href="https://gsajko.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Custom twitter feed project - Part 1</title>
+      <title>Part 2: Collecting and displaying data</title>
+      <link>https://gsajko.github.io/projects/part2_filtering_out/</link>
+      <pubDate>Thu, 18 Feb 2021 16:43:08 +0100</pubDate>
+      
+      <guid>https://gsajko.github.io/projects/part2_filtering_out/</guid>
+      <description>Collecting training data Collecting data I collect Twitter data using a library made by Simon Willison - twitter-to-sql .
+My first approach was to do it by myself: Twitter API is very clear, so it shouldn&amp;rsquo;t be too hard to just grab tweets with API and dump them into SQL? Right? It wouldn&amp;rsquo;t be a problem as a one-time-thing, as I usually had done in the past in jupyter notebooks. But if I would want to make something more robust - with proper testing etc it wouldn&amp;rsquo;t be a &amp;ldquo;custom twitter feed&amp;rdquo; project but a &amp;ldquo;Twitter API to SQL&amp;rdquo; project.</description>
+    </item>
+    
+    <item>
+      <title>Custom twitter feed project, Part 1: Introduction</title>
       <link>https://gsajko.github.io/projects/custom-twitter-feed-part1/</link>
       <pubDate>Tue, 26 Jan 2021 10:15:57 +0100</pubDate>
       
