@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Part 2: Collecting and filtering data | codex</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="Project journal about making custom twitter feed">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Part 2: Collecting and filtering data" />
+  <meta name="twitter:description" content="Project journal about making custom twitter feed"/>
+  <meta name="twitter:site" content="https://twitter.com/saiko_grzegorz" />
+  <meta name="twitter:creator" content="https://twitter.com/saiko_grzegorz" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.b60e0932fe1c50c3d7c5b4f83ee9e4592363654d0f2abf05bbd0678d5b8a214c.css" integrity="sha256-tg4JMv4cUMPXxbT4PunkWSNjZU0PKr8Fu9BnjVuKIUw="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.7b4dc80948cb5c6369e56e29b48a23bd6178286329fb9a72a6714eff07c43a09.css" integrity="sha256-e03ICUjLXGNp5W4ptIojvWF4KGMp&#43;5pypnFO/wfEOgk="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/gsajko.github.io\/projects\/part2_collecting_filtering\/",
+      "name": "Part 2: Collecting and filtering data",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": "Project journal about making custom twitter feed"
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+        <a  href="/">/home</a>
+      </li>
+    
+      <li>
+        <a  href="/about">about</a>
+      </li>
+    
+      <li>
+        <a  href="/posts">blog</a>
+      </li>
+    
+      <li>
+        <a  href="/projects">projects</a>
+      </li>
+    
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+   
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Part 2: Collecting and filtering data</h1>
+            <time datetime="2021-02-18 16:43:08 &#43;0100 CET" class="post__date">Created: 18 Feb 2021</time> 
+
+            <br>
+            <span class="post__date">Read time: 8 minutes</span> 
+          </header>
+          <article class="post__content">
+              
+<h2 id="collecting-training-data">Collecting training data<a class="anchor" href="#collecting-training-data">#</a></h2>
+<h3 id="collecting-data">Collecting data<a class="anchor" href="#collecting-data">#</a></h3>
+<p>I collect Twitter data using a library made by Simon Willison - <a href="https://github.com/dogsheep/twitter-to-sqlite" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>twitter-to-sql</a>
+.</p>
+<p>My first approach was to do it by myself: Twitter API is very clear, so it shouldn&rsquo;t be too hard to just grab tweets with API and dump them into SQL? Right?
+It wouldn&rsquo;t be a problem as a one-time-thing, as I usually had done in the past in jupyter notebooks.
+But if I would want to make something more robust - with proper testing etc it wouldn&rsquo;t be a &ldquo;custom twitter feed&rdquo; project but a &ldquo;Twitter API to SQL&rdquo; project.</p>
+<p>So I decided to use Simon&rsquo;s library.
+It&rsquo;s awesome, I have it &ldquo;git-cloned&rdquo; in a folder, so from time to time I take a look at the code.
+It&rsquo;s a part of a bigger project by Simon called <a href="https://dogsheep.github.io/" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Dogsheep</a>
+. What is Dogsheep? From the website: &ldquo;Tools for personal analytics using SQLite and Datasette&rdquo;.
+In short - Dogsheep is for getting your personal data, and Datasette is for displaying/analyzing.</p>
+<br>
+<details><summary>CLICK for more Datasette and Dogsheep</summary>
+    <p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/l1EFThsAFgs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br>
+         detailed notes by Simon: 
+        <a href = "https://simonwillison.net/2020/Nov/14/personal-data-warehouses/">LINK</a>
+    </p>
+    </details>
+<h3 id="setting-up-cron-jobs">Setting up cron jobs<a class="anchor" href="#setting-up-cron-jobs">#</a></h3>
+<p>This was new to me.
+So what are cron jobs? <a href="https://en.wikipedia.org/wiki/Cron" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Wikipedia</a>
+: &ldquo;is a time-based job scheduler&rdquo;.
+It means, that you schedule when you want a script to run.
+For me, the script was <code>twitter-to-sqlite</code> command downloading my Twitter timeline, and <code>time</code> was &ldquo;every 5 minutes&rdquo;.
+You put this information into a file called <code>crontab</code> and it executes tasks in the background.</p>
+<p>Here are some resources I found useful for setting up cron jobs on Ubuntu:</p>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-ubuntu-1804">https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-ubuntu-1804</a></li>
+<li><a href="https://www.howtogeek.com/101288/how-to-schedule-tasks-on-linux-an-introduction-to-crontab-files/">https://www.howtogeek.com/101288/how-to-schedule-tasks-on-linux-an-introduction-to-crontab-files/</a></li>
+</ul>
+<p>First I tried this command below, but without success.</p>
+<pre><code class="language-bash">*/1 * * * * cd /home/gsajko/work/custom_twitter_feed run-one twitter-to-sqlite home-timeline home.db --since -a auth/auth.json
+</code></pre>
+<p>I spent way too much time debugging this, looked at many <code>log/syslog</code> files.</p>
+<p>Small things I have learned:</p>
+<p>How to check if cron is working?
+<code>ps -ef | grep crond</code></p>
+<p>How to look at the current crontab (without going into the editor)?
+<code>crontab -l</code></p>
+<pre><code class="language-bash">gsajko   16198 16000  0 10:56 pts/2    00:00:00 grep --color=auto crond
+</code></pre>
+<p>My script still didn&rsquo;t run.
+But I found <a href="https://serverfault.com/questions/449651/why-is-my-crontab-not-working-and-how-can-i-troubleshoot-it" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>this gem</a>
+:</p>
+<blockquote>
+<p><strong>The vast majority of &ldquo;my cron script doesn&rsquo;t work&rdquo; problems are caused by this restrictive path.</strong>
+You can solve this in a couple of ways:</p>
+<ol>
+<li>Provide the full path to your command.</li>
+</ol>
+<p><code>1 2 * * * /path/to/your/command</code></p>
+</blockquote>
+<p>So I quickly remade it (removed <code>cd</code> part, added full paths for <code>twitter-to-sqlite</code>, to <code>home.db</code>, and to <code>auth.json</code> file)</p>
+<pre><code class="language-bash">2,7,12,17,22,27,32,37,42,47,52,57 * * * * run-one /home/gsajko/miniconda3/bin/twitter-to-sqlite home-timeline /home/gsajko/work/custom_twitter_feed/home.db -a /home/gsajko/work/custom_twitter_feed/auth/auth.json --since
+</code></pre>
+<p>Simon also shared his crontab for his personal data warehouse here:
+<a href="https://gist.github.com/simonw/1299d61d17637d1145955ebc019ea3c4">https://gist.github.com/simonw/1299d61d17637d1145955ebc019ea3c4</a>.</p>
+<p>I shamelessly copied his &ldquo;time&rdquo; settings.</p>
+<p>What is the <code>run-one</code>? It checks if the previous run was completed, before starting a new one. Given possible timeouts on API side, it&rsquo;s great to have it in place.
+<a href="https://blog.dustinkirkland.com/2011/02/introducing-run-one-and-run-this-one.html">https://blog.dustinkirkland.com/2011/02/introducing-run-one-and-run-this-one.html</a></p>
+<h3 id="note-about-collecting-data">Note about collecting data<a class="anchor" href="#note-about-collecting-data">#</a></h3>
+<p>I&rsquo;m using <code>home-timeline</code> command. Here is info from Twitter API docs:</p>
+<p><a href="https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-home_timeline" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Get Tweet timelines</a>
+</p>
+<blockquote>
+<p>Up to 800 Tweets are obtainable on the home timeline. It is more volatile for users that follow many users or follow users who Tweet frequently.</p>
+</blockquote>
+<p>If you have muted accounts, using this endpoint WON&rsquo;T get their tweets. I some way, I&rsquo;m giving some of the control to twitter when using this option.
+But I wanted to have a wide range of tweets, and another option would be to download ALL tweets by ALL users I follow.</p>
+<p>This would balloon the database waaay more than I would like to - this option would download 3200 tweets of each user. But it would download another 3200 with next use - until it would grab all possible tweets.</p>
+<p>I did this as a test for a list of only 60 users, and <code>db</code> file was about 200mb in size.
+Compared to <code>home-timeline</code> <code>db</code> file from grabbing tweets from more than 600 users I follow - 160mb (about 2,5 months of cronjobs).</p>
+<p>As I mentioned earlier - the script downloaded 3200 each time per user - going back in time to 2008 for some users.
+It was fun looking at tweets posted in 2008, though. People were using Twitter in a totally different way than today - there were mostly micro-blogging (&ldquo;I ate lemon pie today&rdquo;, &ldquo;watching the game&rdquo; - that kind of stuff).</p>
+<h2 id="filtering-out">Filtering out<a class="anchor" href="#filtering-out">#</a></h2>
+<h3 id="finding-news">Finding news<a class="anchor" href="#finding-news">#</a></h3>
+<p>As a part of the design, my goal was to remove news from my feed.
+<strong>The first &ldquo;filter&rdquo; should remove tweets related to the news.</strong></p>
+<p>After pondering for some time (&ldquo;Should I do ML-based news detection model?&quot;), I arrived at a very simple solution:</p>
+<ul>
+<li>removing tweets containing links to news domains</li>
+</ul>
+<p>All I needed, is a collection of news domains.
+Luckily for me, there is such a dataset: <a href="https://www.kaggle.com/uciml/news-aggregator-dataset" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>News Aggregator Dataset</a>
+
+It&rsquo;s a collection of headlines - over 400k news stories.</p>
+<p>In that dataset, there is a column named <code>HOSTNAME</code>, so I could take unique values from that column and ignore the rest of the dataset.</p>
+<p>This got me over 9000 unique news domain names.</p>
+<h4 id="get-the-domain-from-the-tweets">Get the domain from the tweets</h4>
+<p>so let&rsquo;s move back to tweets.</p>
+<p>To find news in tweet&rsquo;s urls I needed to clean them up.</p>
+<ul>
+<li>remove links to other tweets (they are urls - but not )</li>
+<li>remove short links, like &ldquo;bit.ly&rdquo;, &ldquo;buff.ly&rdquo;. <em>(in hindsight - I&rsquo;ll leave them for extracting domains)</em></li>
+</ul>
+<p>Then I needed a function to find url in tweet (simple regex <code>re.findall(r&quot;http\\S+&quot;, tweet)</code>)</p>
+<p>to get the domain I used  <code>urllib</code> library:</p>
+<p>After reviewing some batches, I noticed that some domains weren&rsquo;t detected properly, so there was a need for some splitting and joining - results were transformed to match the <code>news_domain_list</code></p>
+<pre><code class="language-python">def get_domain(url: str) -&gt; str:
+    &quot;&quot;&quot;extracts domain from url, returns it&quot;&quot;&quot;
+    domain = urlparse(url).netloc.replace(&quot;www.&quot;, &quot;&quot;)
+    dot_split = domain.split(&quot;.&quot;)
+    if (len(dot_split) &gt; 2) &amp; (
+        dot_split[-1] == &quot;com&quot;
+    ):  # for links like &quot;edition.cnn.com&quot;, but not like &quot;site.co.nz&quot;
+        return &quot;.&quot;.join(dot_split[1:])
+    else:
+        return domain
+</code></pre>
+<h4 id="is-it-news">Is it news?</h4>
+<p>The result of this was a single pandas cell with a list.</p>
+<p>Current record holder (with 5 links):
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Improving the Fairness of Deep Generative Models without Retraining<br>pdf: <a href="https://t.co/ZhJ5CoRYVk">https://t.co/ZhJ5CoRYVk</a><br>abs: <a href="https://t.co/oxVwuYh1zK">https://t.co/oxVwuYh1zK</a><br>project page: <a href="https://t.co/1EgwOvlfJ7">https://t.co/1EgwOvlfJ7</a><br>github: <a href="https://t.co/T0xFCofJTo">https://t.co/T0xFCofJTo</a><br>colab: <a href="https://t.co/rdaREilt2S">https://t.co/rdaREilt2S</a> <a href="https://t.co/di8b0Kz0I0">pic.twitter.com/di8b0Kz0I0</a></p>&mdash; AK (@ak92501) <a href="https://twitter.com/ak92501/status/1336857186350354432?ref_src=twsrc%5Etfw">December 10, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+<p>I expanded <code>pd.DataFrame</code>, so each domain has its own column.
+On each of those columns I used simple <code>.isin</code></p>
+<pre><code class="language-python">    for col in columns:
+        df[col] = df[col].isin(news_domains_list)
+</code></pre>
+<p><img src="/img/20210226180547.png" alt=""></p>
+<p>Then I summed it up in one column <code>contains_news</code> and made values <code>0</code> or <code>1</code>.</p>
+<p><img src="/img/20210226181734.png" alt=""></p>
+<p>Through uploading batches of tweets to the collection and reviewing them, I make some changes to that list:</p>
+<ul>
+<li>removed some domains (youtube.com, linkedin.com),</li>
+<li>noticed that some of the domains weren&rsquo;t in the dataset (e. g. techmeme.com, buzzfeednews.com), so I added them to the list.</li>
+</ul>
+<p>On top of that - I saw that often quote tweets were containing news, or someone was replying to the news posted by another person.
+To deal with that, I decided to add tweet + quoted_tweet + in_reply_to and use <code>find_news</code> function on that text.</p>
+<h3 id="muting-stuff">Muting stuff<a class="anchor" href="#muting-stuff">#</a></h3>
+<p>Another rule-based solution - just mute words and accounts. The Twitter solution doesn&rsquo;t work for me - it works ok with accounts, but somewhat muting words was unreliable in my experience.</p>
+<h4 id="muted-words">Muted words</h4>
+<p>It&rsquo;s very simple:
+I have two simple lists, one is for case-sensitive words.
+Example looks like this:</p>
+<pre><code class="language-py">mute_list = [&quot;breaking:&quot;, &quot;🍿&quot;, &quot;🚨&quot;, &quot;san francisco&quot;]
+mute_list_case_sensitive = [&quot;GOP&quot;, &quot;BREAKING&quot;, &quot;MAGA&quot;]
+</code></pre>
+<p>I just remove tweets with those strings in them.</p>
+<h4 id="muted-accounts">Muted accounts</h4>
+<p>I created a special list on Twitter called <code>muted</code>. If I decide I don&rsquo;t want to see a particular person in my feed I add them to that list.
+I found also a blocklist - made of a New York Times journalist. I don&rsquo;t have anything against this particular magazine, but as I want to reduce the amount of news-related stories this was useful.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Twitter&#39;s API makes us ask for all these permissions. All the app does is block these accounts: <a href="https://t.co/TaVranhx9k">https://t.co/TaVranhx9k</a>. You can uninstall the app right after using it. The accounts will stay blocked.<br><br>See the right-hand side of the screenshot.</p>&mdash; Block the New York Times (@blocknyt) <a href="https://twitter.com/blocknyt/status/1358829123418791937?ref_src=twsrc%5Etfw">February 8, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+<p>I didn&rsquo;t want to block them - so I downloaded that list, and using API added 900 accounts to the list <code>nytblock</code>.
+Be careful while doing that, Twitter doesn&rsquo;t like too much activity when it comes to lists, their requests limit is lower for that.
+From <a href="https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/create-manage-lists/api-reference/post-lists-members-destroy_all" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>docs</a>
+:</p>
+<blockquote>
+<p>Please note that there can be issues with lists that rapidly remove and add memberships. Take care when using these methods such that you are not too rapidly switching between removals and adds on the same list.</p>
+</blockquote>
+<p>I was hitting Rate Limit Error all the time. It took me some time to realize, it was due to my <code>while...</code> loop.
+Also, be careful with using a loop and using functionality that e.g. involves tweets/likes - I deleted once my whole feed while playing with API.</p>
+<p>With two lists in place, I created a simple function that grabs users from the list, and I use this to filter out those users.
+I try where I can incorporate existing functionality in Twitter so that not everything is local on my PC.</p>
+<h2 id="next">Next<a class="anchor" href="#next">#</a></h2>
+<p>Reviewing and labeling batches - displaying newsfeed.</p>
+
+
+              
+          </article>
+          <br>
+          <span class="post__date">Last modified: 2 Mar 2021</span>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/twitter/">twitter</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/custom_feed/">custom_feed</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/projects/">projects</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://gsajko.github.io/projects/custom-twitter-feed-part1/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Custom twitter feed project, Part 1: Introduction</span>
+    </a>
+  
+
+  
+</div>
+
+          
+
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Twitter"
+         href="https://twitter.com/saiko_grzegorz"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/twitter.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/gsajko"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="LinkedIn"
+         href="https://www.linkedin.com/in/grzegorz-sajko/"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/linkedin.svg')"></div>
+      </a>
+    
+     
+</div>
+
+            <p>© 2021</p>
+          </footer>
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#collecting-training-data">Collecting training data</a>
+      <ul>
+        <li><a href="#collecting-data">Collecting data</a></li>
+        <li><a href="#setting-up-cron-jobs">Setting up cron jobs</a></li>
+        <li><a href="#note-about-collecting-data">Note about collecting data</a></li>
+      </ul>
+    </li>
+    <li><a href="#filtering-out">Filtering out</a>
+      <ul>
+        <li><a href="#finding-news">Finding news</a></li>
+        <li><a href="#muting-stuff">Muting stuff</a></li>
+      </ul>
+    </li>
+    <li><a href="#next">Next</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+    
+  
+
+
+</body>
+
+</html>
