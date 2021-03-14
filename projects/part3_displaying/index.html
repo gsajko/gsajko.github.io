@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Part 3: Displaying Tweets | codex</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="Project journal about making custom twitter feed">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Part 3: Displaying Tweets" />
+  <meta name="twitter:description" content="Project journal about making custom twitter feed"/>
+  <meta name="twitter:site" content="https://twitter.com/saiko_grzegorz" />
+  <meta name="twitter:creator" content="https://twitter.com/saiko_grzegorz" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.b60e0932fe1c50c3d7c5b4f83ee9e4592363654d0f2abf05bbd0678d5b8a214c.css" integrity="sha256-tg4JMv4cUMPXxbT4PunkWSNjZU0PKr8Fu9BnjVuKIUw="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.7b4dc80948cb5c6369e56e29b48a23bd6178286329fb9a72a6714eff07c43a09.css" integrity="sha256-e03ICUjLXGNp5W4ptIojvWF4KGMp&#43;5pypnFO/wfEOgk="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/gsajko.github.io\/projects\/part3_displaying\/",
+      "name": "Part 3: Displaying Tweets",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": "Project journal about making custom twitter feed"
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+        <a  href="/">/home</a>
+      </li>
+    
+      <li>
+        <a  href="/about">about</a>
+      </li>
+    
+      <li>
+        <a  href="/posts">blog</a>
+      </li>
+    
+      <li>
+        <a  href="/projects">projects</a>
+      </li>
+    
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+   
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Part 3: Displaying Tweets</h1>
+            <time datetime="2021-02-26 18:08:01 &#43;0100 CET" class="post__date">Created: 26 Feb 2021</time> 
+
+            <br>
+            <span class="post__date">Read time: 5 minutes</span> 
+          </header>
+          <article class="post__content">
+              
+<h2 id="displaying-and-reviewing-tweets">Displaying and reviewing tweets.<a class="anchor" href="#displaying-and-reviewing-tweets">#</a></h2>
+<p>I query tweets, I filter them out. And how to &ldquo;serve&rdquo; them?
+Best solution would be <a href="/projects/custom-twitter-feed-part1/#visualize-an-ideal-solution" 
+  
+  
+>this</a>
+
+<img src="/img/20210125113932.png" alt="twitter mockup 2"></p>
+<p>In theory this could happen, as Jack Dorsey seem to be &ldquo;for it&rdquo;.
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Second, the value of social media is shifting away from content hosting and removal, and towards recommendation algorithms directing one’s attention. Unfortunately, these algorithms are typically proprietary, and one can’t choose or build alternatives. Yet.</p>&mdash; jack (@jack) <a href="https://twitter.com/jack/status/1204766082885537792?ref_src=twsrc%5Etfw">December 11, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+But I had to look at other options in the meantime.</p>
+<h2 id="streamlit">Streamlit<a class="anchor" href="#streamlit">#</a></h2>
+<p>Streamlit look like really great solution.
+I could grab bigger batch, let&rsquo;s say 1000 of tweets, put some filters on the left sidebar, and user could decide in &ldquo;real-time&rdquo; what content he is interested in (and in what his not).
+Or how many tweets to display:</p>
+<p><img src="/img/20210307145849.png" alt="">
+I builded a prototype early.</p>
+<h3 id="why-not-streamlit">Why not streamlit?<a class="anchor" href="#why-not-streamlit">#</a></h3>
+<h4 id="fixed-hight">fixed hight</h4>
+<p>You embeded-tweet-element needs to have a fixed height.
+What?
+It looks like this:</p>
+<pre><code class="language-py">components.html(et, height=600, scrolling=True)
+</code></pre>
+<p>So there is an issue with this - tweets varies in content and lenght. If you have a media (image), or replying to someone, this mean you will have &ldquo;tall&rdquo; element.
+And you would have to have addtional scrolling.</p>
+<p>At the same time, if you post short, one sentence tweet, there will be big gap.</p>
+<h4 id="hard-to-provide-feedback">hard to provide feedback</h4>
+<p>You can&rsquo;t interact with tweets - if you want to reply or like, you need to open new window in browser.
+It&rsquo;s a little annoying, but I can live with it.</p>
+<p>But what if I want to label tweet as unrelevant? or put some user on &ldquo;muted&rdquo; list?</p>
+<p>There is too much of a friction.</p>
+<h2 id="tweetdeck">Tweetdeck<a class="anchor" href="#tweetdeck">#</a></h2>
+<h3 id="setting-up-tweetdeck">setting up Tweetdeck<a class="anchor" href="#setting-up-tweetdeck">#</a></h3>
+<p>Tweetdeck has fixed width for columns, so for better UI I use stylish plugin for firefox:</p>
+<p><a href="https://userstyles.org/styles/70450/tweetdeck-wide-columns?utm_campaign=stylish_stylepage">https://userstyles.org/styles/70450/tweetdeck-wide-columns?utm_campaign=stylish_stylepage</a></p>
+<p>Changed code to suit me better:</p>
+<pre><code class="language-css">.column{width:450px !important}
+</code></pre>
+<p>In Tweetdeck I have 2 most important collections:</p>
+<ul>
+<li><code>custom_feed</code> - where I upload tweets after filtering them</li>
+<li><code>not_relevant</code> - so I can quickly drag tweets from one column to other, to mark them as not relevant.</li>
+</ul>
+<p><img src="/img/20210307151005.png" alt=""></p>
+<h3 id="uploading-data-to-collections">uploading data to collections<a class="anchor" href="#uploading-data-to-collections">#</a></h3>
+<p>I was planning to use <code>tweepy</code> for uploading - but it doesn&rsquo;t have this functionality.
+But twitter API is quite friendly for noobs, and there is no need for using a dedicated library.</p>
+<h2 id="reviewing-proccess">Reviewing proccess<a class="anchor" href="#reviewing-proccess">#</a></h2>
+<p>Regardless of the methods of displaying tweets, I think it is crucial to have a way of looking at the results.</p>
+<p>It allowed me to think about new features, new ways of filtering out tweets, small fixes etc. in an iterative matter.</p>
+<p>The downside - this method relies on <em>eyeballing</em>. This could lead to silent errors. One of those examples I can think of is removing tweets that could be important for me, without me noticing.</p>
+<p>But as my main goal is improving signal-noise ratio, I&rsquo;m willing to &ldquo;loss&rdquo; those tweets, if this means that my feed would be low on noise.</p>
+<p>In <a href="https://en.wikipedia.org/wiki/Precision_and_recall" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>precision and recall</a>
+ terms, I consider this a problem good for &ldquo;recall&rdquo; metric.</p>
+<p>Some of the cases:</p>
+<h3 id="deleted-tweets">Deleted tweets<a class="anchor" href="#deleted-tweets">#</a></h3>
+<p>While writing a function that uploads tweets to a collection I noticed that sometimes upload fails.
+After inspection there were two reasons:</p>
+<ul>
+<li>tweet is from a protected account</li>
+<li>tweet is deleted.</li>
+</ul>
+<p>Almost 20% of tweets were deleted! - I guess December 2020 was a time when people regretted posting things.
+It changed over time - right now it&rsquo;s less than 10% deleted tweets. It seems high, but I don&rsquo;t think it&rsquo;s surprising</p>
+<ul>
+<li>I often delete tweets, within 10 minutes of posting (noticed spelling error or something like that; retweet something, then cancel retweet and do a quote tweet)</li>
+<li>there are accounts, that have automatic purge script setup, and they delete tweets older than a week or month.</li>
+</ul>
+<p>This is how output of running looks like</p>
+<pre><code class="language-bash">972 tweets in a batch
+Adding 30 tweets to collection custom-1351555076024893440
+no_errors    29
+not_found     1
+Name: err_reason, dtype: int64
+</code></pre>
+<h3 id="shortened-urls">Shortened URLs<a class="anchor" href="#shortened-urls">#</a></h3>
+<p>I noticed, that despite being on the list of domains to be filtered out, some websites where still appearing in my custom feed.
+Upon investication I found the culprit: shotrned url.</p>
+<p>Here are examples:</p>
+<pre><code class="language-py">[
+'1843m.ag','4NN.cx','53eig.ht','808ne.ws','abc30.tv','abc7.la','abc7ne.ws',
+'apne.ws','b-gat.es','bbc.in','bloom.bg','bos.gl','cbsn.ws','cityjourn.al',
+'cnb.cx','cnet.co','cnn.it','cntrvlr.co','cos.lv','dailym.ai','econ.st',
+'engt.co','hill.cm','ja.ma','jtim.es','mol.im','mtr.cool','natgeo.com',
+'nyti.ms' ,'nzzl.us','on.mktw.net','on.theatln.tc','p4k.in','pewrsr.ch',
+'propub.li','rdcu.be','reut.rs','rol.st','sabahdai.ly','sc.mp','slate.trib.al',
+'str.sg','tcrn.ch','tdrt.io','thr.cm','ti.me','tmz.me','to.pbs.org','trib.al',
+'vult.re','wapo.st','washex.am','wdrb.news','wired.trib.al','yhoo.it','zd.net'
+]
+
+</code></pre>
+<p>Getting them was quite time consuming. I had to</p>
+<ul>
+<li>iterate over all links in my data (15k url),</li>
+<li><em>expand</em> URL using <code>requests_html</code> and <code>response = HTMLSession().get(url)</code> - this can take about 1 second to process
+<ul>
+<li>I&rsquo;m  using <code>domain = urlparse(url).netloc</code> when generating custom feed, but it doesn&rsquo;t handles shortened urls.</li>
+</ul>
+</li>
+<li>there were other options for doing that but all were time consuming. I decided on <code>requests_html</code>, because it provided easy method of getting the title of webpage. This could be very useful later for building models - I could <code>concat</code> tweet text with webpage title to provide more context for model.</li>
+</ul>
+<p>As results, I have <code>.json</code> file with 15k link and titles. Each item looks like this:</p>
+<pre><code class="language-py">  {
+      &quot;url&quot;: &quot;https://nyti.ms/3c4yrSX&quot;,
+      &quot;title&quot;: &quot;Could a Small Test Screen People for Covid-19? - The New York Times&quot;,
+      &quot;short_url&quot;: &quot;nyti.ms&quot;,
+      &quot;long_url&quot;: &quot;nytimes.com&quot;,
+      &quot;is_news&quot;: true
+  }
+</code></pre>
+<p><code>short_url</code> - domain extracted using <code>urlparse(url).netloc</code> from shortened url directly
+<code>long_url</code> - domain extracted from url expanded by <code>HTMLSession().get(url)</code></p>
+<p>This allowed me to quickly idwntify additional urls I should add to my <code>news_domains.txt</code> file.</p>
+<p>But there were cases, when shortened url <em>sometimes</em> led to news site, and sometime not. I decided to have a treshold of 50% - if shortened url led to news site 50% of times, it should be counted as news domain.</p>
+<p>Here are url that were <em>spared</em>:</p>
+<p><img src="/img/20210314124305.png" alt=""></p>
+<h3 id="labeling-training-data">Labeling training data<a class="anchor" href="#labeling-training-data">#</a></h3>
+<h2 id="next">NEXT:<a class="anchor" href="#next">#</a></h2>
+<p>![[attn dataset 1]]
+![[attn feed creation]]
+[[blog process]]</p>
+<h3 id="dealing-with-short-urls">[[dealing with short urls]]<a class="anchor" href="#dealing-with-short-urls">#</a></h3>
+<p><a href="https://github.com/gsajko/tweetfeed/blob/master/notebooks/create_news_domains_list.ipynb">https://github.com/gsajko/tweetfeed/blob/master/notebooks/create_news_domains_list.ipynb</a></p>
+
+
+              
+          </article>
+          <br>
+          <span class="post__date">Last modified: 14 Mar 2021</span>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/twitter/">twitter</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/custom_feed/">custom_feed</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/projects/">projects</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://gsajko.github.io/projects/part2_collecting_filtering/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Part 2: Collecting and filtering data</span>
+    </a>
+  
+
+  
+</div>
+
+          
+
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Twitter"
+         href="https://twitter.com/saiko_grzegorz"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/twitter.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/gsajko"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="LinkedIn"
+         href="https://www.linkedin.com/in/grzegorz-sajko/"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/linkedin.svg')"></div>
+      </a>
+    
+     
+</div>
+
+            <p>© 2021</p>
+          </footer>
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#displaying-and-reviewing-tweets">Displaying and reviewing tweets.</a></li>
+    <li><a href="#streamlit">Streamlit</a>
+      <ul>
+        <li><a href="#why-not-streamlit">Why not streamlit?</a></li>
+      </ul>
+    </li>
+    <li><a href="#tweetdeck">Tweetdeck</a>
+      <ul>
+        <li><a href="#setting-up-tweetdeck">setting up Tweetdeck</a></li>
+        <li><a href="#uploading-data-to-collections">uploading data to collections</a></li>
+      </ul>
+    </li>
+    <li><a href="#reviewing-proccess">Reviewing proccess</a>
+      <ul>
+        <li><a href="#deleted-tweets">Deleted tweets</a></li>
+        <li><a href="#shortened-urls">Shortened URLs</a></li>
+        <li><a href="#labeling-training-data">Labeling training data</a></li>
+      </ul>
+    </li>
+    <li><a href="#next">NEXT:</a>
+      <ul>
+        <li><a href="#dealing-with-short-urls">[[dealing with short urls]]</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+    
+  
+
+
+</body>
+
+</html>
