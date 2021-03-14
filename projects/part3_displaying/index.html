@@ -2,7 +2,7 @@
 <html lang="en-us">
 
 <head>
-  <title>Part 3: Displaying tweets | codex</title>
+  <title>Custom twitter feed, Part 3: Displaying Tweets | codex</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
@@ -15,7 +15,7 @@
   
   
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Part 3: Displaying tweets" />
+  <meta name="twitter:title" content="Custom twitter feed, Part 3: Displaying Tweets" />
   <meta name="twitter:description" content="Project journal about making custom twitter feed"/>
   <meta name="twitter:site" content="https://twitter.com/saiko_grzegorz" />
   <meta name="twitter:creator" content="https://twitter.com/saiko_grzegorz" />
@@ -38,7 +38,7 @@
     <link type="text/css" rel="stylesheet" href="/css/post.min.b60e0932fe1c50c3d7c5b4f83ee9e4592363654d0f2abf05bbd0678d5b8a214c.css" integrity="sha256-tg4JMv4cUMPXxbT4PunkWSNjZU0PKr8Fu9BnjVuKIUw="/>
   
     
-    <link type="text/css" rel="stylesheet" href="/css/custom.min.7b4dc80948cb5c6369e56e29b48a23bd6178286329fb9a72a6714eff07c43a09.css" integrity="sha256-e03ICUjLXGNp5W4ptIojvWF4KGMp&#43;5pypnFO/wfEOgk="/>
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.49b172c898f2ab366af014ba7ef48ad28cb40e44ae1334122e68a89486ce3e0c.css" integrity="sha256-SbFyyJjyqzZq8BS6fvSK0oy0DkSuEzQSLmiolIbOPgw="/>
   
   
    
@@ -51,7 +51,7 @@
       "@context": "http://schema.org", 
       "@type": "WebSite", 
       "url": "https:\/\/gsajko.github.io\/projects\/part3_displaying\/",
-      "name": "Part 3: Displaying tweets",
+      "name": "Custom twitter feed, Part 3: Displaying Tweets",
       "author": {
         "@type": "Person",
         "name": ""
@@ -104,7 +104,7 @@
       <div class="post__container">
         <div class="post">
           <header class="post__header">
-            <h1 id="post__title">Part 3: Displaying tweets</h1>
+            <h1 id="post__title">Custom twitter feed, Part 3: Displaying Tweets</h1>
             <time datetime="2021-02-26 18:08:01 &#43;0100 CET" class="post__date">Created: 26 Feb 2021</time> 
 
             <br>
@@ -132,7 +132,7 @@ Or how many tweets to display:</p>
 <p><img src="/img/20210307145849.png" alt=""></p>
 <p>I built a simple prototype early on.</p>
 <h3 id="why-not-streamlit">Why not streamlit?<a class="anchor" href="#why-not-streamlit">#</a></h3>
-<h4 id="fixed-hight">fixed hight</h4>
+<h4 id="fixed-hight">Fixed hight<a class="anchor" href="#fixed-hight">#</a></h4>
 <p>Your embeded-tweet-element needs to have a fixed height.</p>
 <p><strong>What?</strong></p>
 <p>It looks like this:</p>
@@ -140,15 +140,34 @@ Or how many tweets to display:</p>
 </code></pre>
 <p>So there is an issue with this - tweets vary in content and length. If you have a media (image) or replying to someone, this means you will have a &ldquo;tall&rdquo; element.
 And you would have to have additional scrolling.</p>
-<p>At the same time, if you post a short, one-sentence tweet, there will be a big gap.</p>
-<h4 id="hard-to-provide-feedback">hard to provide feedback</h4>
+<p>Screenshot:
+<img src="/img/20210307145657.png" alt="">
+There is cut off at the bottom, and additional scrollbar on the right</p>
+<p>At the same time, if you post a short, one-sentence tweet, there will be a big gap.
+<img src="/img/20210307145639a.png" alt=""></p>
+<h4 id="hard-to-provide-feedback">Hard to provide feedback<a class="anchor" href="#hard-to-provide-feedback">#</a></h4>
 <p>You can&rsquo;t interact with tweets - if you want to reply or like, you need to open a new window in the browser.
 It&rsquo;s a little annoying, but I can live with it.</p>
 <p>But what if I want to label a tweet as not relevant? or put some user on the &ldquo;muted&rdquo; list?</p>
 <p>There is too much friction.</p>
 <p>I didn&rsquo;t liked using it.</p>
 <h2 id="tweetdeck">Tweetdeck<a class="anchor" href="#tweetdeck">#</a></h2>
-<h3 id="setting-up-tweetdeck">setting up Tweetdeck<a class="anchor" href="#setting-up-tweetdeck">#</a></h3>
+<h3 id="what-is-tweetdeck">What is Tweetdeck?<a class="anchor" href="#what-is-tweetdeck">#</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/TweetDeck">https://en.wikipedia.org/wiki/TweetDeck</a></p>
+<blockquote>
+<p>TweetDeck is a social media dashboard application for management of Twitter accounts.</p>
+</blockquote>
+<p>That&rsquo;s it. It is dashboard, made by Twitter, for power-users.</p>
+<h3 id="drawbacks">Drawbacks<a class="anchor" href="#drawbacks">#</a></h3>
+<p><strong>Tweetdeck vs Embedded tweet</strong></p>
+<p>Tweetdeck on the <strong>left</strong>, normal embedded tweet on the <strong>right</strong>
+<img src="/img/20210314140745.png" alt=""></p>
+<p>As seen above, Tweetdeck doesn&rsquo;t provides full context. You don&rsquo;t see tweet that user is replying to. You need to click on tweet to display it in thread.</p>
+<p><strong>Ugly</strong></p>
+<p>I don&rsquo;t like the look of it. Too narrow columns makes tweets hard to read.</p>
+<p><strong>Doesn&rsquo;t work good on mobile</strong></p>
+<p>But the same is true for streamlit. So I have to live with this one.</p>
+<h3 id="setting-up-tweetdeck">Setting up Tweetdeck<a class="anchor" href="#setting-up-tweetdeck">#</a></h3>
 <p>Tweetdeck has fixed width for columns, so for better UI I use <code>stylish</code> plugin for firefox:</p>
 <p><a href="https://userstyles.org/styles/70450/tweetdeck-wide-columns?utm_campaign=stylish_stylepage">https://userstyles.org/styles/70450/tweetdeck-wide-columns?utm_campaign=stylish_stylepage</a></p>
 <p>Changed code to suit me better:</p>
@@ -165,7 +184,7 @@ It&rsquo;s a little annoying, but I can live with it.</p>
   
 >click for full resolution</a>
 </p>
-<h3 id="uploading-data-to-collections">uploading data to collections<a class="anchor" href="#uploading-data-to-collections">#</a></h3>
+<h3 id="uploading-data-to-collections">Uploading data to collections<a class="anchor" href="#uploading-data-to-collections">#</a></h3>
 <p>I was planning to use <code>tweepy</code> for uploading - but it doesn&rsquo;t have this functionality.
 But Twitter API is quite friendly for noobs, and there is no need for using a dedicated library.</p>
 <h2 id="reviewing-process">Reviewing process<a class="anchor" href="#reviewing-process">#</a></h2>
@@ -193,7 +212,7 @@ It changed over time - right now it&rsquo;s less than 10% deleted tweets. It see
 <li>there are accounts, that have automatic purge script setup, and they delete tweets older than a week or month.</li>
 </ul>
 <p>This is how the output of running looks like</p>
-<pre><code class="language-bash">972 tweets in a batch
+<pre><code>972 tweets in a batch
 Adding 30 tweets to collection custom-1351555076024893440
 no_errors    29
 not_found     1
@@ -260,11 +279,6 @@ Upon investigation, I found the culprit: shortened url.</p>
 <p>Tweets are getting stale - I&rsquo;m no longer see low-noise tweets, but I don&rsquo;t find most of them interesting right <strong>NOW</strong>.</p>
 <p>So finally comes time for building a model.</p>
 <p>I will frame the ranking problem as a binary classification problem, and will just sort tweets by the output of the model.</p>
-<p>![[attn dataset 1]]
-![[attn feed creation]]
-[[blog process]]</p>
-<h3 id="dealing-with-short-urls">[[dealing with short urls]]<a class="anchor" href="#dealing-with-short-urls">#</a></h3>
-<p><a href="https://github.com/gsajko/tweetfeed/blob/master/notebooks/create_news_domains_list.ipynb">https://github.com/gsajko/tweetfeed/blob/master/notebooks/create_news_domains_list.ipynb</a></p>
 
 
               
@@ -286,6 +300,11 @@ Upon investigation, I found the culprit: shortened url.</p>
     </li></ul>
 
  <div class="pagination">
+  
+    <a class="pagination__item" href="https://gsajko.github.io/projects/part2_collecting_filtering/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Custom twitter feed, Part 2: Collecting and Filtering Data</span>
+    </a>
   
 
   
@@ -345,8 +364,10 @@ Upon investigation, I found the culprit: shortened url.</p>
     </li>
     <li><a href="#tweetdeck">Tweetdeck</a>
       <ul>
-        <li><a href="#setting-up-tweetdeck">setting up Tweetdeck</a></li>
-        <li><a href="#uploading-data-to-collections">uploading data to collections</a></li>
+        <li><a href="#what-is-tweetdeck">What is Tweetdeck?</a></li>
+        <li><a href="#drawbacks">Drawbacks</a></li>
+        <li><a href="#setting-up-tweetdeck">Setting up Tweetdeck</a></li>
+        <li><a href="#uploading-data-to-collections">Uploading data to collections</a></li>
       </ul>
     </li>
     <li><a href="#reviewing-process">Reviewing process</a>
@@ -356,11 +377,7 @@ Upon investigation, I found the culprit: shortened url.</p>
         <li><a href="#labeling-training-data">Labeling training data</a></li>
       </ul>
     </li>
-    <li><a href="#whats-next">What&rsquo;s next:</a>
-      <ul>
-        <li><a href="#dealing-with-short-urls">[[dealing with short urls]]</a></li>
-      </ul>
-    </li>
+    <li><a href="#whats-next">What&rsquo;s next:</a></li>
   </ul>
 </nav>
       </div>
