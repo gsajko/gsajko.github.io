@@ -8,16 +8,6 @@
     <language>en-us</language>
     <copyright>© {year}</copyright><atom:link href="https://gsajko.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Part 3: Displaying tweets</title>
-      <link>https://gsajko.github.io/projects/part3_displaying/</link>
-      <pubDate>Fri, 26 Feb 2021 18:08:01 +0100</pubDate>
-      
-      <guid>https://gsajko.github.io/projects/part3_displaying/</guid>
-      <description>Displaying and reviewing tweets. I query tweets, I filter them out. And how to &amp;ldquo;serve&amp;rdquo; them? Best solution would be this In theory, this could happen, as Jack Dorsey seems to be &amp;ldquo;for it&amp;rdquo;. Second, the value of social media is shifting away from content hosting and removal, and towards recommendation algorithms directing one’s attention. Unfortunately, these algorithms are typically proprietary, and one can’t choose or build alternatives. Yet.
-&amp;mdash; jack (@jack) December 11, 2019  But I had to look at other options in the meantime.</description>
-    </item>
-    
-    <item>
       <title>Part 2: Collecting and filtering data</title>
       <link>https://gsajko.github.io/projects/part2_collecting_filtering/</link>
       <pubDate>Thu, 18 Feb 2021 16:43:08 +0100</pubDate>
