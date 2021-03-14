@@ -2,7 +2,7 @@
 <html lang="en-us">
 
 <head>
-  <title>Part 3: Displaying Tweets | codex</title>
+  <title>Part 3: Displaying tweets | codex</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
@@ -15,7 +15,7 @@
   
   
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Part 3: Displaying Tweets" />
+  <meta name="twitter:title" content="Part 3: Displaying tweets" />
   <meta name="twitter:description" content="Project journal about making custom twitter feed"/>
   <meta name="twitter:site" content="https://twitter.com/saiko_grzegorz" />
   <meta name="twitter:creator" content="https://twitter.com/saiko_grzegorz" />
@@ -51,7 +51,7 @@
       "@context": "http://schema.org", 
       "@type": "WebSite", 
       "url": "https:\/\/gsajko.github.io\/projects\/part3_displaying\/",
-      "name": "Part 3: Displaying Tweets",
+      "name": "Part 3: Displaying tweets",
       "author": {
         "@type": "Person",
         "name": ""
@@ -104,11 +104,11 @@
       <div class="post__container">
         <div class="post">
           <header class="post__header">
-            <h1 id="post__title">Part 3: Displaying Tweets</h1>
+            <h1 id="post__title">Part 3: Displaying tweets</h1>
             <time datetime="2021-02-26 18:08:01 &#43;0100 CET" class="post__date">Created: 26 Feb 2021</time> 
 
             <br>
-            <span class="post__date">Read time: 5 minutes</span> 
+            <span class="post__date">Read time: 6 minutes</span> 
           </header>
           <article class="post__content">
               
@@ -120,35 +120,36 @@ Best solution would be <a href="/projects/custom-twitter-feed-part1/#visualize-a
 >this</a>
 
 <img src="/img/20210125113932.png" alt="twitter mockup 2"></p>
-<p>In theory this could happen, as Jack Dorsey seem to be &ldquo;for it&rdquo;.
+<p>In theory, this could happen, as Jack Dorsey seems to be &ldquo;for it&rdquo;.
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Second, the value of social media is shifting away from content hosting and removal, and towards recommendation algorithms directing one’s attention. Unfortunately, these algorithms are typically proprietary, and one can’t choose or build alternatives. Yet.</p>&mdash; jack (@jack) <a href="https://twitter.com/jack/status/1204766082885537792?ref_src=twsrc%5Etfw">December 11, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 But I had to look at other options in the meantime.</p>
 <h2 id="streamlit">Streamlit<a class="anchor" href="#streamlit">#</a></h2>
-<p>Streamlit look like really great solution.
-I could grab bigger batch, let&rsquo;s say 1000 of tweets, put some filters on the left sidebar, and user could decide in &ldquo;real-time&rdquo; what content he is interested in (and in what his not).
+<p>Streamlit looks like a great solution.
+I could grab a bigger batch, let&rsquo;s say 1000 tweets, put some filters on the left sidebar, and the user could decide in &ldquo;real-time&rdquo; what content he is interested in (and in what his not).
 Or how many tweets to display:</p>
-<p><img src="/img/20210307145849.png" alt="">
-I builded a prototype early.</p>
+<p><img src="/img/20210307145849.png" alt=""></p>
+<p>I built a simple prototype early on.</p>
 <h3 id="why-not-streamlit">Why not streamlit?<a class="anchor" href="#why-not-streamlit">#</a></h3>
 <h4 id="fixed-hight">fixed hight</h4>
-<p>You embeded-tweet-element needs to have a fixed height.
-What?
-It looks like this:</p>
+<p>Your embeded-tweet-element needs to have a fixed height.</p>
+<p>What?</p>
+<p>It looks like this:</p>
 <pre><code class="language-py">components.html(et, height=600, scrolling=True)
 </code></pre>
-<p>So there is an issue with this - tweets varies in content and lenght. If you have a media (image), or replying to someone, this mean you will have &ldquo;tall&rdquo; element.
-And you would have to have addtional scrolling.</p>
-<p>At the same time, if you post short, one sentence tweet, there will be big gap.</p>
+<p>So there is an issue with this - tweets vary in content and length. If you have a media (image) or replying to someone, this means you will have a &ldquo;tall&rdquo; element.
+And you would have to have additional scrolling.</p>
+<p>At the same time, if you post a short, one-sentence tweet, there will be a big gap.</p>
 <h4 id="hard-to-provide-feedback">hard to provide feedback</h4>
-<p>You can&rsquo;t interact with tweets - if you want to reply or like, you need to open new window in browser.
+<p>You can&rsquo;t interact with tweets - if you want to reply or like, you need to open a new window in the browser.
 It&rsquo;s a little annoying, but I can live with it.</p>
-<p>But what if I want to label tweet as unrelevant? or put some user on &ldquo;muted&rdquo; list?</p>
-<p>There is too much of a friction.</p>
+<p>But what if I want to label a tweet as not relevant? or put some user on the &ldquo;muted&rdquo; list?</p>
+<p>There is too much friction.</p>
+<p>I didn&rsquo;t liked using it.</p>
 <h2 id="tweetdeck">Tweetdeck<a class="anchor" href="#tweetdeck">#</a></h2>
 <h3 id="setting-up-tweetdeck">setting up Tweetdeck<a class="anchor" href="#setting-up-tweetdeck">#</a></h3>
-<p>Tweetdeck has fixed width for columns, so for better UI I use stylish plugin for firefox:</p>
+<p>Tweetdeck has fixed width for columns, so for better UI I use <code>stylish</code> plugin for firefox:</p>
 <p><a href="https://userstyles.org/styles/70450/tweetdeck-wide-columns?utm_campaign=stylish_stylepage">https://userstyles.org/styles/70450/tweetdeck-wide-columns?utm_campaign=stylish_stylepage</a></p>
 <p>Changed code to suit me better:</p>
 <pre><code class="language-css">.column{width:450px !important}
@@ -156,22 +157,27 @@ It&rsquo;s a little annoying, but I can live with it.</p>
 <p>In Tweetdeck I have 2 most important collections:</p>
 <ul>
 <li><code>custom_feed</code> - where I upload tweets after filtering them</li>
-<li><code>not_relevant</code> - so I can quickly drag tweets from one column to other, to mark them as not relevant.</li>
+<li><code>not_relevant</code> - so I can quickly drag tweets from one column to another, to mark them as not relevant.</li>
 </ul>
-<p><img src="/img/20210307151005.png" alt=""></p>
+<p><img src="/img/20210307151005.png" alt="">
+<a href="/img/20210307151005.png" 
+  
+  
+>click for full resolution</a>
+</p>
 <h3 id="uploading-data-to-collections">uploading data to collections<a class="anchor" href="#uploading-data-to-collections">#</a></h3>
 <p>I was planning to use <code>tweepy</code> for uploading - but it doesn&rsquo;t have this functionality.
-But twitter API is quite friendly for noobs, and there is no need for using a dedicated library.</p>
-<h2 id="reviewing-proccess">Reviewing proccess<a class="anchor" href="#reviewing-proccess">#</a></h2>
+But Twitter API is quite friendly for noobs, and there is no need for using a dedicated library.</p>
+<h2 id="reviewing-process">Reviewing process<a class="anchor" href="#reviewing-process">#</a></h2>
 <p>Regardless of the methods of displaying tweets, I think it is crucial to have a way of looking at the results.</p>
-<p>It allowed me to think about new features, new ways of filtering out tweets, small fixes etc. in an iterative matter.</p>
+<p>It allowed me to think about new features, new ways of filtering out tweets, small fixes, etc. in an iterative matter</p>
 <p>The downside - this method relies on <em>eyeballing</em>. This could lead to silent errors. One of those examples I can think of is removing tweets that could be important for me, without me noticing.</p>
-<p>But as my main goal is improving signal-noise ratio, I&rsquo;m willing to &ldquo;loss&rdquo; those tweets, if this means that my feed would be low on noise.</p>
+<p>But as my main goal is improving the signal-noise ratio, I&rsquo;m willing to &ldquo;loss&rdquo; those tweets, if this means that my feed would be low on noise.</p>
 <p>In <a href="https://en.wikipedia.org/wiki/Precision_and_recall" 
   
    target="_blank" rel="noreferrer noopener" 
 >precision and recall</a>
- terms, I consider this a problem good for &ldquo;recall&rdquo; metric.</p>
+ terms, I consider this a problem good for the &ldquo;recall&rdquo; metric.</p>
 <p>Some of the cases:</p>
 <h3 id="deleted-tweets">Deleted tweets<a class="anchor" href="#deleted-tweets">#</a></h3>
 <p>While writing a function that uploads tweets to a collection I noticed that sometimes upload fails.
@@ -186,7 +192,7 @@ It changed over time - right now it&rsquo;s less than 10% deleted tweets. It see
 <li>I often delete tweets, within 10 minutes of posting (noticed spelling error or something like that; retweet something, then cancel retweet and do a quote tweet)</li>
 <li>there are accounts, that have automatic purge script setup, and they delete tweets older than a week or month.</li>
 </ul>
-<p>This is how output of running looks like</p>
+<p>This is how the output of running looks like</p>
 <pre><code class="language-bash">972 tweets in a batch
 Adding 30 tweets to collection custom-1351555076024893440
 no_errors    29
@@ -194,8 +200,8 @@ not_found     1
 Name: err_reason, dtype: int64
 </code></pre>
 <h3 id="shortened-urls">Shortened URLs<a class="anchor" href="#shortened-urls">#</a></h3>
-<p>I noticed, that despite being on the list of domains to be filtered out, some websites where still appearing in my custom feed.
-Upon investication I found the culprit: shotrned url.</p>
+<p>I noticed, that despite being on the list of domains to be filtered out, some websites were still appearing in my custom feed.
+Upon investigation, I found the culprit: shortened url.</p>
 <p>Here are examples:</p>
 <pre><code class="language-py">[
 '1843m.ag','4NN.cx','53eig.ht','808ne.ws','abc30.tv','abc7.la','abc7ne.ws',
@@ -209,17 +215,17 @@ Upon investication I found the culprit: shotrned url.</p>
 ]
 
 </code></pre>
-<p>Getting them was quite time consuming. I had to</p>
+<p>Getting them was time-consuming. I had to:</p>
 <ul>
 <li>iterate over all links in my data (15k url),</li>
 <li><em>expand</em> URL using <code>requests_html</code> and <code>response = HTMLSession().get(url)</code> - this can take about 1 second to process
 <ul>
-<li>I&rsquo;m  using <code>domain = urlparse(url).netloc</code> when generating custom feed, but it doesn&rsquo;t handles shortened urls.</li>
+<li>I&rsquo;m using <code>domain = urlparse(url).netloc</code> when generating custom feed, but it doesn&rsquo;t handle shortened urls.</li>
 </ul>
 </li>
-<li>there were other options for doing that but all were time consuming. I decided on <code>requests_html</code>, because it provided easy method of getting the title of webpage. This could be very useful later for building models - I could <code>concat</code> tweet text with webpage title to provide more context for model.</li>
+<li>there were other options for doing that but all were time-consuming. I decided on <code>requests_html</code>, because it provided a easy method of getting the title of a webpage. This could be very useful later for building models - I could <code>concat</code> tweet text with webpage title to provide more context for a model.</li>
 </ul>
-<p>As results, I have <code>.json</code> file with 15k link and titles. Each item looks like this:</p>
+<p>As result, I have <code>.json</code> file with 15k links and titles. Each item looks like this:</p>
 <pre><code class="language-py">  {
       &quot;url&quot;: &quot;https://nyti.ms/3c4yrSX&quot;,
       &quot;title&quot;: &quot;Could a Small Test Screen People for Covid-19? - The New York Times&quot;,
@@ -230,12 +236,30 @@ Upon investication I found the culprit: shotrned url.</p>
 </code></pre>
 <p><code>short_url</code> - domain extracted using <code>urlparse(url).netloc</code> from shortened url directly
 <code>long_url</code> - domain extracted from url expanded by <code>HTMLSession().get(url)</code></p>
-<p>This allowed me to quickly idwntify additional urls I should add to my <code>news_domains.txt</code> file.</p>
-<p>But there were cases, when shortened url <em>sometimes</em> led to news site, and sometime not. I decided to have a treshold of 50% - if shortened url led to news site 50% of times, it should be counted as news domain.</p>
-<p>Here are url that were <em>spared</em>:</p>
+<p>This allowed me to quickly identify additional urls I should add to my <code>news_domains.txt</code> file.</p>
+<p>But there were cases, when shortened url <em>sometimes</em> led to a news site, and sometimes not. I decided to have a threshold of 50% - if shortened url led to a news site 50% of the time, it should be counted as a news domain.</p>
+<p>Here are urls that were <em>spared</em>:</p>
 <p><img src="/img/20210314124305.png" alt=""></p>
 <h3 id="labeling-training-data">Labeling training data<a class="anchor" href="#labeling-training-data">#</a></h3>
-<h2 id="next">NEXT:<a class="anchor" href="#next">#</a></h2>
+<p>As shown here, labeling tweet as <code>not_relevant</code> is as simple as drag &amp; drop from one collection to another.
+<img src="/img/20210307151005.png" alt="">
+<a href="/img/20210307151005.png" 
+  
+  
+>click for full resolution</a>
+</p>
+<p>Right now I reviewed 11k tweets, and in my <code>not_relevant</code> collection I have &hellip; about 150-180 tweets.</p>
+<p>This is due to the iterative process of reviewing:</p>
+<p>Most of the time, before moving tweet to <code>not_relevant</code> I asked myself:</p>
+<p>&ldquo;Can I prevent seeing similar tweets in the future?&rdquo;</p>
+<p>So instead of adding tweets to a collection, most of the time I created a new <em>filtering-out</em> rule or tweaked some code.</p>
+<p>Such a low <code>not_relevant</code> tweets count seen by me is a good sign. This is what I was aiming for.</p>
+<p>On the other hand, if I like a tweet, and would like to see more of that kind of tweet in the future, I just &hellip; &ldquo;like&rdquo; ❤️ it.</p>
+<p>Right now I have over 1700 liked tweets, so that should be plentiful for what&rsquo;s next.</p>
+<h2 id="whats-next">What&rsquo;s next:<a class="anchor" href="#whats-next">#</a></h2>
+<p>Tweets are getting stale - I&rsquo;m no longer see low-noise tweets, but I don&rsquo;t find most of them interesting right <strong>NOW</strong>.</p>
+<p>So finally comes time for building a model.</p>
+<p>I will frame the ranking problem as a binary classification problem, and will just sort tweets by the output of the model.</p>
 <p>![[attn dataset 1]]
 ![[attn feed creation]]
 [[blog process]]</p>
@@ -330,14 +354,14 @@ Upon investication I found the culprit: shotrned url.</p>
         <li><a href="#uploading-data-to-collections">uploading data to collections</a></li>
       </ul>
     </li>
-    <li><a href="#reviewing-proccess">Reviewing proccess</a>
+    <li><a href="#reviewing-process">Reviewing process</a>
       <ul>
         <li><a href="#deleted-tweets">Deleted tweets</a></li>
         <li><a href="#shortened-urls">Shortened URLs</a></li>
         <li><a href="#labeling-training-data">Labeling training data</a></li>
       </ul>
     </li>
-    <li><a href="#next">NEXT:</a>
+    <li><a href="#whats-next">What&rsquo;s next:</a>
       <ul>
         <li><a href="#dealing-with-short-urls">[[dealing with short urls]]</a></li>
       </ul>
