@@ -1,94 +1,64 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://gsajko.github.io/projects/part3_displaying/</loc>
-    <lastmod>2021-03-14T19:49:12+01:00</lastmod>
-  </url>
-  
   <url>
     <loc>https://gsajko.github.io/tags/custom_feed/</loc>
-    <lastmod>2021-03-14T19:49:12+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-05-23T15:15:31+02:00</lastmod>
+  </url><url>
     <loc>https://gsajko.github.io/projects/</loc>
-    <lastmod>2021-03-14T19:49:12+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-05-23T15:15:31+02:00</lastmod>
+  </url><url>
     <loc>https://gsajko.github.io/tags/projects/</loc>
-    <lastmod>2021-03-14T19:49:12+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-05-23T15:15:31+02:00</lastmod>
+  </url><url>
     <loc>https://gsajko.github.io/tags/</loc>
-    <lastmod>2021-03-14T19:49:12+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-05-23T15:15:31+02:00</lastmod>
+  </url><url>
+    <loc>https://gsajko.github.io/tags/testing-data/</loc>
+    <lastmod>2021-05-23T15:15:31+02:00</lastmod>
+  </url><url>
+    <loc>https://gsajko.github.io/projects/testing_data/</loc>
+    <lastmod>2021-05-23T15:15:31+02:00</lastmod>
+  </url><url>
     <loc>https://gsajko.github.io/tags/twitter/</loc>
-    <lastmod>2021-03-14T19:49:12+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-05-23T15:15:31+02:00</lastmod>
+  </url><url>
+    <loc>https://gsajko.github.io/projects/part3_displaying/</loc>
+    <lastmod>2021-05-16T20:44:24+02:00</lastmod>
+  </url><url>
     <loc>https://gsajko.github.io/projects/part2_collecting_filtering/</loc>
-    <lastmod>2021-03-14T19:17:06+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-05-16T20:44:23+02:00</lastmod>
+  </url><url>
     <loc>https://gsajko.github.io/posts/use_twitter_for_research/</loc>
     <lastmod>2021-03-02T16:55:02+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gsajko.github.io/tags/learning/</loc>
     <lastmod>2021-03-02T16:55:02+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gsajko.github.io/posts/</loc>
     <lastmod>2021-03-02T16:55:02+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gsajko.github.io/tags/researching/</loc>
     <lastmod>2021-03-02T16:55:02+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gsajko.github.io/tags/distraction/</loc>
     <lastmod>2021-03-02T16:54:54+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gsajko.github.io/tags/focus/</loc>
     <lastmod>2021-03-02T16:54:54+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gsajko.github.io/posts/avoid_twitter_distractions/</loc>
     <lastmod>2021-03-02T16:54:54+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gsajko.github.io/projects/custom-twitter-feed-part1/</loc>
-    <lastmod>2021-03-14T19:17:36+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-05-16T21:22:24+02:00</lastmod>
+  </url><url>
     <loc>https://gsajko.github.io/</loc>
     <lastmod>2021-01-28T21:21:22+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gsajko.github.io/about/</loc>
-    <lastmod>2020-12-10T16:47:05+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-05-16T20:44:29+02:00</lastmod>
+  </url><url>
     <loc>https://gsajko.github.io/categories/</loc>
   </url>
-  
 </urlset>

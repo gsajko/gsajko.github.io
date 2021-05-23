@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Testing Data with Great Expectations | codex</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Testing Data with Great Expectations" />
+  <meta name="twitter:description" content=""/>
+  <meta name="twitter:site" content="https://twitter.com/saiko_grzegorz" />
+  <meta name="twitter:creator" content="https://twitter.com/saiko_grzegorz" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.86d1effd4c412b85ac13db53a90c473a0f256f789b821e131125c9aa25cb6a6d.css" integrity="sha256-htHv/UxBK4WsE9tTqQxHOg8lb3ibgh4TESXJqiXLam0="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.49b172c898f2ab366af014ba7ef48ad28cb40e44ae1334122e68a89486ce3e0c.css" integrity="sha256-SbFyyJjyqzZq8BS6fvSK0oy0DkSuEzQSLmiolIbOPgw="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/gsajko.github.io\/projects\/testing_data\/",
+      "name": "Testing Data with Great Expectations",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+        <a  href="/">/home</a>
+      </li>
+    
+      <li>
+        <a  href="/about">about</a>
+      </li>
+    
+      <li>
+        <a  href="/posts">blog</a>
+      </li>
+    
+      <li>
+        <a  href="/projects">projects</a>
+      </li>
+    
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Testing Data with Great Expectations</h1>
+            <time datetime="2021-05-15 19:15:23 &#43;0100 &#43;0100" class="post__date">Created: 15 May 2021</time> 
+
+            <br>
+            <span class="post__date">Read time: 6 minutes</span> 
+          </header>
+          <article class="post__content">
+              
+<h2 id="why">Why<a class="anchor" href="#why">#</a></h2>
+<h3 id="data-validation">Data Validation<a class="anchor" href="#data-validation">#</a></h3>
+<p>If you use python, I hope you use some tool to help you validate and test the code you are writing, for example <code>pytest</code>, or <code>pylint</code>.
+But we should also test validity of the data.</p>
+<p>For example, missing values could be very problematic for some models, so it&rsquo;s better to recognize errors in our dataset before we load them into a model (or even before we start pre-processing)</p>
+<h2 id="how">How<a class="anchor" href="#how">#</a></h2>
+<p>Enter <a href="https://greatexpectations.io/" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Great Expectations</a>
+.</p>
+<p>I don&rsquo;t know how people managed data validation and testing before - my guess would be writing lots of <code>assert</code> python code.
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Thanks Kyle! And thank you and the team for building and maintaining it. You don&#39;t want to know how I managed my data expectations before Great Expectations (involved a lot of duct tape).</p>&mdash; Goku Mohandas (@GokuMohandas) <a href="https://twitter.com/GokuMohandas/status/1369385679080325149?ref_src=twsrc%5Etfw">March 9, 2021</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+<p>Goku, I want to know how did people managed data validation!</p>
+<p>I heard people many times mention this tool, but was kind of intimidated and expected something complex, but this is far from the truth. It&rsquo;s really easy to use.
+For my simple project following along <a href="https://docs.greatexpectations.io/en/latest/guides/tutorials/getting_started.html" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Getting started tutorial</a>
+ was enough.</p>
+<p>To start you need to install it:</p>
+<p>For me it was:</p>
+<p><code>poetry add great_expectations</code></p>
+<p>Then you can init your project</p>
+<p><code>great_expectations init</code></p>
+<p>If you didn&rsquo;t configure Datasource at this moment, don&rsquo;t worry, just run <code>init</code> again. I at first passed on on this step.</p>
+<p>To build intuition about Greater Expectations I followed <a href="https://madewithml.com/courses/mlops/testing/#data" 
+  
+   target="_blank" rel="noreferrer noopener" 
+>Made with ML tutorial</a>
+.</p>
+<p>Just create a Jupyter Notebook for prototyping.
+I had my dataset loaded in <code>pandas</code> DataFrame.
+You need to wrap it load it into <code>PandasDataset</code>.</p>
+<p>Both lines of code below produce the same result.</p>
+<pre><code class="language-py">ge_df = ge.dataset.PandasDataset(df)
+ge_df = ge.from_pandas(df)
+</code></pre>
+<p>Then you are ready to create <code>expectations</code></p>
+<h3 id="expectations">Expectations<a class="anchor" href="#expectations">#</a></h3>
+<p>To quickly create some <code>expectations</code> about my dataset, I used pre-bulid ones.</p>
+<p>Here you can find a list of them:
+<a href="https://docs.greatexpectations.io/en/latest/reference/glossary_of_expectations.html">https://docs.greatexpectations.io/en/latest/reference/glossary_of_expectations.html</a></p>
+<p>Of course, you could build a custom one if needed.</p>
+<p>Here what I come up with on the spot. They should be self-explanatory.</p>
+<pre><code class="language-py">ge_df.expect_column_to_exist(column=&quot;id&quot;)
+ge_df.expect_column_to_exist(column=&quot;full_text&quot;)
+ge_df.expect_column_values_to_be_unique(column=&quot;id&quot;)
+ge_df.expect_column_values_to_not_be_null(column=&quot;full_text&quot;)
+ge_df.expect_column_values_to_be_of_type(column=&quot;id&quot;, type_=&quot;int&quot;)
+ge_df.expect_column_values_to_be_of_type(column=&quot;full_text&quot;, type_=&quot;str&quot;)
+</code></pre>
+<p>When you have your <code>expectations</code>, you need to group them into <code>expectations suite</code>.</p>
+<h3 id="expectation-suite">Expectation Suite<a class="anchor" href="#expectation-suite">#</a></h3>
+<p>This code will take <code>expectations</code> attached to <code>ge_df</code> and create a suite.</p>
+<pre><code class="language-py">expectation_suite = ge_df.get_expectation_suite()
+</code></pre>
+<p>We can use it later to validate dataset.</p>
+<pre><code class="language-py">print(ge_df.validate(expectation_suite=expectation_suite, only_return_failures=True))
+</code></pre>
+<pre><code class="language-json">{
+  &quot;results&quot;: [],
+  &quot;statistics&quot;: {
+    &quot;evaluated_expectations&quot;: 6,
+    &quot;successful_expectations&quot;: 6,
+    &quot;unsuccessful_expectations&quot;: 0,
+    &quot;success_percent&quot;: 100.0
+  },
+  &quot;meta&quot;: {
+    &quot;great_expectations_version&quot;: &quot;0.13.19&quot;,
+    &quot;expectation_suite_name&quot;: &quot;default&quot;,
+    &quot;run_id&quot;: {
+      &quot;run_name&quot;: null,
+      &quot;run_time&quot;: &quot;2021-05-10T13:10:19.926456+00:00&quot;
+    },
+    &quot;batch_kwargs&quot;: {
+      &quot;ge_batch_id&quot;: &quot;303d04fa-b190-11eb-9fda-74d43587be13&quot;
+    },
+    &quot;batch_markers&quot;: {},
+    &quot;batch_parameters&quot;: {},
+    &quot;validation_time&quot;: &quot;20210510T131019.926363Z&quot;
+  },
+  &quot;evaluation_parameters&quot;: {},
+  &quot;success&quot;: true
+}
+
+</code></pre>
+<h3 id="using-great-expectations-cli">Using Great Expectations CLI<a class="anchor" href="#using-great-expectations-cli">#</a></h3>
+<p>So let&rsquo;s go back to configuring Datasource.
+Run <code>great_expectations init</code> again, and CLI will guide you through.</p>
+<pre><code class="language-bash">
+================================================================================
+
+Would you like to configure a Datasource? [Y/n]: Y
+
+What data would you like Great Expectations to connect to?
+    1. Files on a filesystem (for processing with Pandas or Spark)
+    2. Relational database (SQL)
+: 1
+
+What are you processing your files with?
+    1. Pandas
+    2. PySpark
+: 1
+
+Enter the path (relative or absolute) of the root directory where the data files are stored.
+: data
+
+Give your new Datasource a short name.
+ [data__dir]: datasources    
+
+Great Expectations will now add a new Datasource 'datasources' to your deployment, by adding this entry to your great_expectations.yml:
+
+  datasources:
+    data_asset_type:
+      class_name: PandasDataset
+      module_name: great_expectations.dataset
+    batch_kwargs_generators:
+      subdir_reader:
+        class_name: SubdirReaderBatchKwargsGenerator
+        base_directory: ../data
+    class_name: PandasDatasource
+    module_name: great_expectations.datasource
+
+
+Would you like to proceed? [Y/n]: y
+</code></pre>
+<p>My dataset is in <code>.json</code> format, but GE will load it into Pandas, without me needing to do anything.</p>
+<h4 id="profiling">Profiling<a class="anchor" href="#profiling">#</a></h4>
+<p>Here is where the magic happens:</p>
+<p>While prototyping, I had to come up with my own <code>expectations</code>. <strong>GE can do this for you</strong>.</p>
+<pre><code>================================================================================
+
+Would you like to profile new Expectations for a single data asset within your new Datasource? [Y/n]: Y
+
+Would you like to:
+    1. choose from a list of data assets in this datasource
+    2. enter the path of a data file
+: 1
+
+Which data would you like to use?
+    1. seen (file)
+    2. batch_to_add (file)
+    3. dataset (file)
+
+    Don't see the name of the data asset in the list above? Just type it
+: 3
+
+Name the new Expectation Suite [dataset.warning]: datasetjson
+
+Great Expectations will choose a couple of columns and generate expectations about them
+to demonstrate some examples of assertions you can make about your data.
+
+Great Expectations will store these expectations in a new Expectation Suite 'datasetjson' here:
+
+  file:///home/gsajko/work/tweetfeed/great_expectations/expectations/datasetjson.json
+
+Would you like to proceed? [Y/n]: y
+
+Generating example Expectation Suite...
+
+Done generating example Expectation Suite
+</code></pre>
+<p>With this, we have generated automatically <code>expectations</code> for our dataset.</p>
+<p>I come up with <strong>6</strong> of them, GE generated <strong>16</strong>.</p>
+<p>I think this is the</p>
+<h4 id="documenting-dataset">Documenting Dataset<a class="anchor" href="#documenting-dataset">#</a></h4>
+<p>On top of profiling, GE also builds documentation for us.</p>
+<pre><code>================================================================================
+
+Would you like to build Data Docs? [Y/n]: Y
+
+The following Data Docs sites will be built:
+
+ - local_site: file:///home/gsajko/work/tweetfeed/great_expectations/uncommitted/data_docs/local_site/index.html
+
+Would you like to proceed? [Y/n]: Y
+
+Building Data Docs...
+
+Done building Data Docs
+
+Would you like to view your new Expectations in Data Docs? This will open a new browser window. [Y/n]: Y
+</code></pre>
+<p>This is how it will look like in Data Docs.</p>
+<p><img src="/img/20210510154547.png" alt=""></p>
+<p><code>great_expectations suite edit datasetjson</code>
+this will launch disposable Jupyter Notebook, that will help you editing <code>datasetjson</code> suite. (oh yes, my great sense for naming things)</p>
+<p><img src="/img/20210510155423.png" alt=""></p>
+<p>Above are expectations posted above in editable form in a notebook.</p>
+<p>After that, you can view your expectations in <code>json</code> format.</p>
+<pre><code class="language-json">    {
+      &quot;expectation_type&quot;: &quot;expect_column_values_to_not_be_null&quot;,
+      &quot;kwargs&quot;: {
+        &quot;column&quot;: &quot;full_text&quot;
+      },
+    },
+    {
+      &quot;expectation_type&quot;: &quot;expect_column_value_lengths_to_be_between&quot;,
+      &quot;kwargs&quot;: {
+        &quot;column&quot;: &quot;full_text&quot;,
+        &quot;min_value&quot;: 1
+      }
+</code></pre>
+<p>Change name of a project is straight forward:</p>
+<p>changed json file name and inside json change <code>expectation_suite_name</code></p>
+<pre><code class="language-json">&quot;expectation_suite_name&quot;: &quot;tweet_dataset&quot;
+</code></pre>
+<p>create checkpoint
+<code>great_expectations checkpoint new tweets tweet_dataset</code></p>
+<p>this (taken from GE docs) shows the whole process.</p>
+<p><img src="/img/iterative-dev-loop.png" alt=""></p>
+<blockquote>
+<p>Welcome! Now that you have initialized your project, the best way to work with Great Expectations is in this iterative dev loop:</p>
+<ol>
+<li>Let Great Expectations create a (terrible) first draft suite, by running <code>great_expectations suite new</code>.</li>
+<li>View the suite here in Data Docs.</li>
+<li>Edit the suite in a Jupyter Notebook by <code>running great_expectations suite edit</code></li>
+<li>Repeat Steps 2-3 until you are happy with your suite.</li>
+<li>Commit this suite to your source control repository.</li>
+</ol>
+</blockquote>
+<p>then you can run test using:
+<code>great_expectations checkpoint run tweets</code>
+you can add this to make file,</p>
+<pre><code class="language-bash">great-expectations:
+	@poetry run great_expectations checkpoint run tweets
+	@echo &quot;The great_expectations pass! ✨ 🍰 ✨&quot;
+</code></pre>
+<p>notice that I changed <code>_</code> to <code>-</code> in alias.
+<code>check: great-expectations test lint style</code></p>
+<p><code>check: great-expectations test lint style</code></p>
+<h2 id="closing-thoughts">Closing thoughts<a class="anchor" href="#closing-thoughts">#</a></h2>
+<p>Let&rsquo;s go back to first step of process:</p>
+<blockquote>
+<p>Let Great Expectations create a (terrible) first draft suite, by running <code>great_expectations suite new</code>.</p>
+</blockquote>
+<p>I think this is the best thing IMHO about Great Expectations.</p>
+<p>When you start, I&rsquo;ll probably scratch your head, thinking about what exactly should you expect from your data. By creating first (<em>terrible</em>) draft GE removes that mental blog, and enables you to iterate to create a better and better suite.</p>
+
+
+              
+          </article>
+          <br>
+          <span class="post__date">Last modified: 23 May 2021</span>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/twitter/">twitter</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/custom_feed/">custom_feed</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://gsajko.github.io/tags/projects/">projects</a>
+    </li>
+    </ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://gsajko.github.io/projects/part3_displaying/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Custom twitter feed, Part 3: Displaying Tweets</span>
+    </a>
+  
+
+  
+</div>
+
+          
+
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Twitter"
+         href="https://twitter.com/saiko_grzegorz"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/twitter.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/gsajko"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="LinkedIn"
+         href="https://www.linkedin.com/in/grzegorz-sajko/"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('https://gsajko.github.io/svg/linkedin.svg')"></div>
+      </a>
+    
+     
+</div>
+
+            <p>© 2021</p>
+          </footer>
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why">Why</a>
+      <ul>
+        <li><a href="#data-validation">Data Validation</a></li>
+      </ul>
+    </li>
+    <li><a href="#how">How</a>
+      <ul>
+        <li><a href="#expectations">Expectations</a></li>
+        <li><a href="#expectation-suite">Expectation Suite</a></li>
+        <li><a href="#using-great-expectations-cli">Using Great Expectations CLI</a></li>
+      </ul>
+    </li>
+    <li><a href="#closing-thoughts">Closing thoughts</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.575dda8d49ee02639942c63564273e6da972ab531dda26a08800bdcb477cbd7f.js" integrity="sha256-V13ajUnuAmOZQsY1ZCc&#43;balyq1Md2iagiAC9y0d8vX8=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+    
+  
+
+
+</body>
+
+</html>
