@@ -114,7 +114,7 @@
               
 <h2 id="why">Why<a class="anchor" href="#why">#</a></h2>
 <h3 id="data-validation">Data Validation<a class="anchor" href="#data-validation">#</a></h3>
-<p>If you use python, I hope you use some tool to help you validate and test the code you are writing, for example <code>pytest</code>, or <code>pylint</code>.
+<p>If you use python, I hope you use some tool to help you validate and test the code you are writing, for example <code>pytest</code>, or <code>pylint</code>.<br>
 But we should also test validity of the data.</p>
 <p>For example, missing values could be very problematic for some models, so it&rsquo;s better to recognize errors in our dataset before we load them into a model (or even before we start pre-processing)</p>
 <h2 id="how">How<a class="anchor" href="#how">#</a></h2>
@@ -128,18 +128,18 @@ But we should also test validity of the data.</p>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </p>
 <p>Goku, I want to know how did people managed data validation!</p>
-<p>I heard people many times mention this tool, but was kind of intimidated and expected something complex, but this is far from the truth. It&rsquo;s really easy to use.
+<p>I heard people many times mention this tool, but was kind of intimidated and expected something complex, but this is far from the truth. It&rsquo;s really easy to use.<br>
 For my simple project following along <a href="https://docs.greatexpectations.io/en/latest/guides/tutorials/getting_started.html" 
   
    target="_blank" rel="noreferrer noopener" 
 >Getting started tutorial</a>
  was enough.</p>
-<p>To start you need to install it:</p>
-<p>For me it was:</p>
-<p><code>poetry add great_expectations</code></p>
-<p>Then you can init your project</p>
-<p><code>great_expectations init</code></p>
-<p>If you didn&rsquo;t configure Datasource at this moment, don&rsquo;t worry, just run <code>init</code> again. I at first passed on on this step.</p>
+<p>To start you need to install it.
+For me it was:<br>
+<code>poetry add great_expectations</code></p>
+<p>Then you can init your project.<br>
+<code>great_expectations init</code></p>
+<p>After that you&rsquo;ll be prompted to configure Datasource. At first I ignored this step. Don&rsquo;t worry, just run <code>init</code> again, and then you can complete this configuration.</p>
 <p>To build intuition about Greater Expectations I followed <a href="https://madewithml.com/courses/mlops/testing/#data" 
   
    target="_blank" rel="noreferrer noopener" 
@@ -152,13 +152,13 @@ You need to wrap it load it into <code>PandasDataset</code>.</p>
 <pre><code class="language-py">ge_df = ge.dataset.PandasDataset(df)
 ge_df = ge.from_pandas(df)
 </code></pre>
-<p>Then you are ready to create <code>expectations</code></p>
+<p>Then you are ready to create <code>expectations</code>.</p>
 <h3 id="expectations">Expectations<a class="anchor" href="#expectations">#</a></h3>
-<p>To quickly create some <code>expectations</code> about my dataset, I used pre-bulid ones.</p>
-<p>Here you can find a list of them:
+<p>To quickly create some <code>expectations</code> about my dataset, I used pre-bulid ones.<br>
+Here you can find a list of them:
 <a href="https://docs.greatexpectations.io/en/latest/reference/glossary_of_expectations.html">https://docs.greatexpectations.io/en/latest/reference/glossary_of_expectations.html</a></p>
-<p>Of course, you could build a custom one if needed.</p>
-<p>Here what I come up with on the spot. They should be self-explanatory.</p>
+<p>Of course, you could build a custom one if needed.<br>
+Here what I come up with on the spot. They should be self-explanatory.</p>
 <pre><code class="language-py">ge_df.expect_column_to_exist(column=&quot;id&quot;)
 ge_df.expect_column_to_exist(column=&quot;full_text&quot;)
 ge_df.expect_column_values_to_be_unique(column=&quot;id&quot;)
@@ -202,7 +202,7 @@ ge_df.expect_column_values_to_be_of_type(column=&quot;full_text&quot;, type_=&qu
 
 </code></pre>
 <h3 id="using-great-expectations-cli">Using Great Expectations CLI<a class="anchor" href="#using-great-expectations-cli">#</a></h3>
-<p>So let&rsquo;s go back to configuring Datasource.
+<p>So let&rsquo;s go back to configuring Datasource.<br>
 Run <code>great_expectations init</code> again, and CLI will guide you through.</p>
 <pre><code class="language-bash">
 ================================================================================
@@ -243,8 +243,8 @@ Would you like to proceed? [Y/n]: y
 </code></pre>
 <p>My dataset is in <code>.json</code> format, but GE will load it into Pandas, without me needing to do anything.</p>
 <h4 id="profiling">Profiling<a class="anchor" href="#profiling">#</a></h4>
-<p>Here is where the magic happens:</p>
-<p>While prototyping, I had to come up with my own <code>expectations</code>. <strong>GE can do this for you</strong>.</p>
+<p>Here is where the magic happens:<br>
+While prototyping, I had to come up with my own <code>expectations</code>. <strong>GE can do this for you</strong>.</p>
 <pre><code>================================================================================
 
 Would you like to profile new Expectations for a single data asset within your new Datasource? [Y/n]: Y
@@ -277,9 +277,9 @@ Generating example Expectation Suite...
 
 Done generating example Expectation Suite
 </code></pre>
-<p>With this, we have generated automatically <code>expectations</code> for our dataset.</p>
+<p>With this, I have generated automatically <code>expectations</code> for my
+dataset.</p>
 <p>I come up with <strong>6</strong> of them, GE generated <strong>16</strong>.</p>
-<p>I think this is the</p>
 <h4 id="documenting-dataset">Documenting Dataset<a class="anchor" href="#documenting-dataset">#</a></h4>
 <p>On top of profiling, GE also builds documentation for us.</p>
 <pre><code>================================================================================
@@ -300,11 +300,11 @@ Would you like to view your new Expectations in Data Docs? This will open a new 
 </code></pre>
 <p>This is how it will look like in Data Docs.</p>
 <p><img src="/img/20210510154547.png" alt=""></p>
-<p><code>great_expectations suite edit datasetjson</code>
-this will launch disposable Jupyter Notebook, that will help you editing <code>datasetjson</code> suite. (oh yes, my great sense for naming things)</p>
+<p><code>great_expectations suite edit datasetjson</code></p>
+<p>this will launch disposable Jupyter Notebook, that will help you editing <code>datasetjson</code> suite. (oh yes, my great sense for naming things)</p>
 <p><img src="/img/20210510155423.png" alt=""></p>
-<p>Above are expectations posted above in editable form in a notebook.</p>
-<p>After that, you can view your expectations in <code>json</code> format.</p>
+<p>Above are expectations posted above in editable form in a notebook.<br>
+After that, you can view your expectations in <code>json</code> format.</p>
 <pre><code class="language-json">    {
       &quot;expectation_type&quot;: &quot;expect_column_values_to_not_be_null&quot;,
       &quot;kwargs&quot;: {
@@ -318,11 +318,11 @@ this will launch disposable Jupyter Notebook, that will help you editing <code>d
         &quot;min_value&quot;: 1
       }
 </code></pre>
-<p>Change name of a project is straight forward:</p>
-<p>changed json file name and inside json change <code>expectation_suite_name</code></p>
+<p>Change name of a project is straight forward:<br>
+changed json file name and inside json change <code>expectation_suite_name</code></p>
 <pre><code class="language-json">&quot;expectation_suite_name&quot;: &quot;tweet_dataset&quot;
 </code></pre>
-<p>create checkpoint
+<p>create checkpoint<br>
 <code>great_expectations checkpoint new tweets tweet_dataset</code></p>
 <p>this (taken from GE docs) shows the whole process.</p>
 <p><img src="/img/iterative-dev-loop.png" alt=""></p>
@@ -336,9 +336,9 @@ this will launch disposable Jupyter Notebook, that will help you editing <code>d
 <li>Commit this suite to your source control repository.</li>
 </ol>
 </blockquote>
-<p>then you can run test using:
+<p>then you can run test using:<br>
 <code>great_expectations checkpoint run tweets</code>
-you can add this to make file,</p>
+you can add this to make file</p>
 <pre><code class="language-bash">great-expectations:
 	@poetry run great_expectations checkpoint run tweets
 	@echo &quot;The great_expectations pass! ✨ 🍰 ✨&quot;
@@ -358,7 +358,7 @@ you can add this to make file,</p>
               
           </article>
           <br>
-          <span class="post__date">Last modified: 23 May 2021</span>
+          <span class="post__date">Last modified: 25 May 2021</span>
           
 
 <ul class="tags__list">

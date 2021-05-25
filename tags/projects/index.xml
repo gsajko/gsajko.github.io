@@ -14,7 +14,8 @@
       <pubDate>Sat, 15 May 2021 19:15:23 +0100</pubDate>
       
       <guid>https://gsajko.github.io/projects/testing_data/</guid>
-      <description>Why Data Validation If you use python, I hope you use some tool to help you validate and test the code you are writing, for example pytest, or pylint. But we should also test validity of the data.
+      <description>Why Data Validation If you use python, I hope you use some tool to help you validate and test the code you are writing, for example pytest, or pylint.
+But we should also test validity of the data.
 For example, missing values could be very problematic for some models, so it&amp;rsquo;s better to recognize errors in our dataset before we load them into a model (or even before we start pre-processing)</description>
     </item>
     
